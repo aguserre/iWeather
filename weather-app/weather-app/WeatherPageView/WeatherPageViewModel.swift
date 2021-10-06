@@ -22,6 +22,9 @@ final class WeatherPageViewModel: ObservableObject {
     
     //wind
     @Published var windVelocity: String
+    
+    //sun state
+    @Published var sunState: CGFloat
 
     
     init(weather: WeatherModel) {
@@ -33,6 +36,7 @@ final class WeatherPageViewModel: ObservableObject {
         maxTemp = String(weather.main.temp_max)
         visibility = "\(weather.visibility) m"
         windVelocity = "\(weather.wind.speed) m/s"
+        sunState = CGFloat(weather.currentInHours*100/24)
     }
     
     func getSpaces() -> CGFloat {

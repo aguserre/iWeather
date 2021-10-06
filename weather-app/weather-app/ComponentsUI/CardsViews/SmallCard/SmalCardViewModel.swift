@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class SmallCardViewModel: ObservableObject {
-    private let spacing: CGFloat = 30
+    private let spacing: CGFloat = 25
     @Published var title: String
     @Published var imageTitle: String
     @Published var description: String

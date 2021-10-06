@@ -24,6 +24,8 @@
 		D3555676270E144800C5E183 /* SmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555675270E144800C5E183 /* SmallCardView.swift */; };
 		D3555678270E15E100C5E183 /* SmalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555677270E15E100C5E183 /* SmalCardViewModel.swift */; };
 		D3555697270E193100C5E183 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555696270E193100C5E183 /* BlurView.swift */; };
+		D355569A270E364D00C5E183 /* SunCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555699270E364D00C5E183 /* SunCardView.swift */; };
+		D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569B270E4B1500C5E183 /* IntExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		D3555675270E144800C5E183 /* SmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardView.swift; sourceTree = "<group>"; };
 		D3555677270E15E100C5E183 /* SmalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmalCardViewModel.swift; sourceTree = "<group>"; };
 		D3555696270E193100C5E183 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		D3555699270E364D00C5E183 /* SunCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunCardView.swift; sourceTree = "<group>"; };
+		D355569B270E4B1500C5E183 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				D3555662270DEFCE00C5E183 /* ComponentsUI */,
 				D3166B14270CF175009159BB /* Model */,
 				D3166AF0270CEC9C009159BB /* Preview Content */,
+				D355569B270E4B1500C5E183 /* IntExtension.swift */,
 			);
 			path = "weather-app";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		D355566A270DFF1D00C5E183 /* CardsViews */ = {
 			isa = PBXGroup;
 			children = (
+				D3555698270E362F00C5E183 /* SunCard */,
 				D3555679270E15F700C5E183 /* SmallCard */,
 				D355566F270E042A00C5E183 /* TempCard */,
 			);
@@ -211,6 +217,14 @@
 				D3555675270E144800C5E183 /* SmallCardView.swift */,
 			);
 			path = SmallCard;
+			sourceTree = "<group>";
+		};
+		D3555698270E362F00C5E183 /* SunCard */ = {
+			isa = PBXGroup;
+			children = (
+				D3555699270E364D00C5E183 /* SunCardView.swift */,
+			);
+			path = SunCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +365,8 @@
 				D3555697270E193100C5E183 /* BlurView.swift in Sources */,
 				D3555664270DF00A00C5E183 /* OffsetPageTabView.swift in Sources */,
 				D3555667270DF08700C5E183 /* HomeViewModel.swift in Sources */,
+				D355569A270E364D00C5E183 /* SunCardView.swift in Sources */,
+				D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */,
 				D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */,
 				D3555669270DF0C100C5E183 /* WeatherPageView.swift in Sources */,
 				D3555671270E04DB00C5E183 /* TempCardViewModel.swift in Sources */,

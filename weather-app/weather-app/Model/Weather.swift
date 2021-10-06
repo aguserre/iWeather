@@ -34,6 +34,18 @@ struct WeatherModel: Codable {
         }
     }
     
+    var currentInHours: Int {
+        return dt.convertToHourDay(timeFromGMT: tymezone)
+    }
+    
+    var sunsetInHouts: Int {
+        return sys.sunset.convertToHourDay(timeFromGMT: tymezone)
+    }
+    
+    var sunriseInHours: Int {
+        return sys.sunrise.convertToHourDay(timeFromGMT: tymezone)
+    }
+    
 }
 
 struct Coordinates: Codable {
@@ -87,8 +99,8 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                wind: Wind(speed: 1.5,
                                           deg: 2),
                                clouds: Clouds(all: 1),
-                               dt: 6,
-                               sys: Sys(type: 1, id: 5122, message: 0.0139, country: "US", sunrise: 7, sunset: 19),
+                               dt: 15000,
+                               sys: Sys(type: 1, id: 5122, message: 0.0139, country: "US", sunrise: 10000, sunset: 20000),
                                tymezone: -25200,
                                id: 42000,
                                name: "Mountain View",
@@ -107,8 +119,8 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                                                   wind: Wind(speed: 1.5,
                                                                              deg: 2),
                                                                   clouds: Clouds(all: 1),
-                                                                  dt: 22,
-                                                                  sys: Sys(type: 1, id: 5122, message: 0.0139, country: "US", sunrise: 6, sunset: 19),
+                                                                  dt: 25000,
+                                                                  sys: Sys(type: 1, id: 5122, message: 0.0139, country: "US", sunrise: 10000, sunset: 20000),
                                                                   tymezone: -25200,
                                                                   id: 42001,
                                                                   name: "Bragado",

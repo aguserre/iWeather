@@ -22,9 +22,12 @@ struct WeatherPageView: View {
                     .frame(height: 160)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    HStack {
-                        SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
-                        SmallCardView(viewModel: viewModel.getWindCardViewModel())
+                    VStack(spacing: 25) {
+                        HStack(spacing: 10) {
+                            SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                            SmallCardView(viewModel: viewModel.getWindCardViewModel())
+                        }
+                        SunCardView(currentPercent: viewModel.sunState)
                     }
                 }
             }.frame(width: proxy.size.width)

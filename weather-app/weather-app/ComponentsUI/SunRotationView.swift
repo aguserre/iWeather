@@ -10,9 +10,9 @@ import SwiftUI
 struct SunRotationView: View {
     
     @Binding var percent: CGFloat
-    var icon: String
+    @Binding var iconImage: UIImage
     
-    private let circleHeight: CGFloat = 100
+    private let circleHeight: CGFloat = 80
     private let colors: [Color] = [
         Color("clearNight"),
         Color("clearNight"),
@@ -27,7 +27,7 @@ struct SunRotationView: View {
     ]
      
     var body: some View {
-        let pinHeight = circleHeight * 0.4
+        let pinHeight = circleHeight * 0.5
         let completion = percent * 0.01
         Circle()
             .trim(from: 0, to: completion)
@@ -42,10 +42,9 @@ struct SunRotationView: View {
             .rotationEffect(.degrees(-90))
             .frame(width: circleHeight, height: circleHeight)
             .overlay(
-                Image(systemName: icon)
+                Image(uiImage: iconImage)
                     .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(.yellow)
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: pinHeight, height: pinHeight)
                     .offset(y: -pinHeight / 2)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

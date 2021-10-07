@@ -28,9 +28,13 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var isNight: Bool
     @Published var sunsetTime: String
     @Published var sunriseTime: String
+    @Published var icon: String
     
     //Pressure
     @Published var pressure: Int
+    
+    //Humidity
+    @Published var humidity: String
     
     init(weather: WeatherModel) {
         self.weather = weather
@@ -46,6 +50,8 @@ final class WeatherPageViewModel: ObservableObject {
         sunsetTime = "Sunset: \(weather.sunsetInHours) Hs"
         sunriseTime = "Sunrise: \(weather.sunriseInHours) Hs"
         pressure = weather.main.pressure
+        humidity = "\(weather.main.humidity)%"
+        icon = weather.weather.icon
     }
     
     func getSpaces() -> CGFloat {
@@ -79,7 +85,8 @@ final class WeatherPageViewModel: ObservableObject {
         SunCardViewModel(currentPercent: dayState,
                          isNight: isNight,
                          sunsetText: sunsetTime,
-                         sunriseText: sunriseTime)
+                         sunriseText: sunriseTime,
+                         icon: icon)
     }
     
     func getPressureCardViewModel() -> PressureCardViewModel {
@@ -87,6 +94,13 @@ final class WeatherPageViewModel: ObservableObject {
                               imagetitle: "thermometer.sun",
                               preassure: pressure,
                               size: UIScreen.main.bounds.size)
+    }
+    
+    func getHumidityCardViewModel() -> SmallCardViewModel {
+        SmallCardViewModel(title: "Humidity",
+                           imagetitle: "wind",
+                           description: humidity,
+                           size: UIScreen.main.bounds.size)
     }
     
 }

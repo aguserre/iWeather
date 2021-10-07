@@ -14,6 +14,7 @@ final class TempCardViewModel: ObservableObject {
     @Published var weatherDescription: String
     @Published var minTemp: String
     @Published var maxTemp: String
+
     
     init(cityName: String, currentTemp: String, spaces: CGFloat, weatherDescription: String, minTemp: String, maxTemp: String) {
         self.cityName = cityName
@@ -22,5 +23,6 @@ final class TempCardViewModel: ObservableObject {
         self.weatherDescription = weatherDescription
         self.minTemp = "L: \(minTemp)º"
         self.maxTemp = "H: \(maxTemp)º"
+        
     }
 }

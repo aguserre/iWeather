@@ -31,6 +31,7 @@
 		D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A2270E7EA900C5E183 /* PressureCardView.swift */; };
 		D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */; };
 		D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A6270E81E400C5E183 /* ProgressBarView.swift */; };
+		D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AA270EAAE700C5E183 /* ImageDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		D35556A2270E7EA900C5E183 /* PressureCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardView.swift; sourceTree = "<group>"; };
 		D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardViewModel.swift; sourceTree = "<group>"; };
 		D35556A6270E81E400C5E183 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		D35556A8270E970900C5E183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D35556AA270EAAE700C5E183 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 		D3166AE9270CEC99009159BB /* weather-app */ = {
 			isa = PBXGroup;
 			children = (
+				D35556A9270EAAD700C5E183 /* Services */,
+				D35556A8270E970900C5E183 /* Info.plist */,
 				D3166AEA270CEC99009159BB /* weather_appApp.swift */,
 				D3166AEE270CEC9C009159BB /* Assets.xcassets */,
 				D3555665270DF07400C5E183 /* HomeView */,
@@ -248,6 +253,14 @@
 				D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */,
 			);
 			path = PressureCard;
+			sourceTree = "<group>";
+		};
+		D35556A9270EAAD700C5E183 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D35556AA270EAAE700C5E183 /* ImageDownloader.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +399,7 @@
 				D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */,
 				D3166AED270CEC99009159BB /* HomeView.swift in Sources */,
 				D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */,
+				D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */,
 				D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */,
 				D3166B16270CF19B009159BB /* Weather.swift in Sources */,
 				D3555697270E193100C5E183 /* BlurView.swift in Sources */,
@@ -562,6 +576,7 @@
 				DEVELOPMENT_TEAM = DZ6N356P2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "weather-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -592,6 +607,7 @@
 				DEVELOPMENT_TEAM = DZ6N356P2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "weather-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

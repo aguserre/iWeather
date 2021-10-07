@@ -87,7 +87,7 @@ struct Sys: Codable {
 }
 
 var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                               weather: Weather(id: 2, main: "Clear", description: "Clear Night", icon: "01d"),
+                               weather: Weather(id: 2, main: "Clear", description: "Clear Night", icon: "01n"),
                                base: "",
                                main: MainData(temp: 5,
                                               feels_like: 546,
@@ -99,7 +99,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                wind: Wind(speed: 1.5,
                                           deg: 2),
                                clouds: Clouds(all: 1),
-                               dt: 15000,
+                               dt: 26000,
                                sys: Sys(type: 1, id: 5122, message: 0.0139, country: "US", sunrise: 10000, sunset: 20000),
                                tymezone: -25200,
                                id: 42000,
@@ -107,7 +107,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                cod: 200),
                                    
                                    WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                                                                  weather: Weather(id: 2, main: "Other", description: "Cloudy Night", icon: "01d"),
+                                                                  weather: Weather(id: 2, main: "Other", description: "Cloudy Night", icon: "02n"),
                                                                   base: "",
                                                                   main: MainData(temp: 26,
                                                                                  feels_like: 546,
@@ -145,7 +145,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                                                    name: "London",
                                                                    cod: 200),
                                     WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                                                                   weather: Weather(id: 2, main: "Other", description: "Cloudy day", icon: "01d"),
+                                                                   weather: Weather(id: 2, main: "Other", description: "Cloudy day", icon: "02d"),
                                                                    base: "",
                                                                    main: MainData(temp: 282.55,
                                                                                   feels_like: 546,

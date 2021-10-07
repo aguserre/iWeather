@@ -37,6 +37,7 @@ struct WeatherPageView: View {
                         
                         HStack(spacing: 10) {
                             PressureCardView(viewModel: viewModel.getPressureCardViewModel())
+                            SmallCardView(viewModel: viewModel.getHumidityCardViewModel())
                         }
                     }
                 }

@@ -10,9 +10,11 @@ import SwiftUI
 struct SunCardView: View {
     
     @ObservedObject private var viewModel: SunCardViewModel
+    @ObservedObject private var imageLoader: ImageLoader
     
     init(viewModel: SunCardViewModel) {
         self.viewModel = viewModel
+        self.imageLoader = ImageLoader(urlString: viewModel.icon)
     }
     
     var body: some View {
@@ -23,18 +25,16 @@ struct SunCardView: View {
             
             VStack {
                 HStack {
-                    Text("Current time")
+                    Text(viewModel.title)
                         .padding(.top, 5)
                         .padding(.bottom, 1)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.white)
                     
-                    Image(systemName: viewModel.isNight ? "moon.fill" : "sun.min")
+                    Image(uiImage: viewModel.imageWeather)
                         .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.white)
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 20)
+                        .frame(width: 40, height: 40)
                 }
                 
                 Divider()
@@ -43,7 +43,7 @@ struct SunCardView: View {
                 
                 Spacer()
                 
-                SunRotationView(percent: $viewModel.percent, icon: viewModel.isNight ? "moon.fill" : "sun.min.fill")
+                SunRotationView(percent: $viewModel.percent, iconImage: $viewModel.imageWeather)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation(Animation.linear(duration: 1)) {
@@ -66,13 +66,17 @@ struct SunCardView: View {
                 }.padding([.leading, .trailing], 10)
                 Spacer()
             }.frame(width: UIScreen.main.bounds.width * 0.9)
-        }.frame(width: UIScreen.main.bounds.width, height: 180)
+        }
+        .frame(width: UIScreen.main.bounds.width, height: 180)
+        .onReceive(imageLoader.didChange) { data in
+            viewModel.imageWeather = UIImage(data: data) ?? UIImage()
+        }
     }
 }
 
 struct SunCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = SunCardViewModel(currentPercent: 80, isNight: true, sunsetText: "Sunset: 22 Hs", sunriseText: "Sunrise: 22 Hs")
+        let vm = SunCardViewModel(currentPercent: 80, isNight: true, sunsetText: "Sunset: 22 Hs", sunriseText: "Sunrise: 22 Hs", icon: "11n.png")
         SunCardView(viewModel: vm)
             .preferredColorScheme(.dark)
     }

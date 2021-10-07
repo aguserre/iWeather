@@ -29,7 +29,7 @@ struct WeatherModel: Codable {
     
     var backGroundColor: String {
         switch self.weather.main {
-        case "Clear" :
+        case .Clear :
             return isNight ? "clearNight" : "clear"
         default:
             return isNight ? "cloudyNight" : "cloudyDay"
@@ -57,9 +57,19 @@ struct Coordinates: Codable {
 
 struct Weather: Codable {
     let id: Int
-    let main: String
+    let main: MainValues
     let description: String
     let icon: String
+}
+
+enum MainValues: String, Codable {
+    case Rain = "Rain"
+    case Thunderstorm = "Thunderstorm"
+    case Drizzle = "Drizzle"
+    case Snow = "Snow"
+    case Atmosphere = "Atmosphere"
+    case Clear = "Clear"
+    case Clouds = "Clouds"
 }
 
 struct MainData: Codable {
@@ -89,7 +99,7 @@ struct Sys: Codable {
 }
 
 var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.08, lat: 37.39),
-                               weather: Weather(id: 2, main: "Rain", description: "Clear Night", icon: "01n"),
+                                                 weather: Weather(id: 2, main: .Clear, description: "Clear Night", icon: "01n"),
                                base: "",
                                main: MainData(temp: 5,
                                               feels_like: 546,
@@ -109,7 +119,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.0
                                cod: 200),
                                    
                                    WeatherModel(coord: Coordinates(long: -60.49082007148439, lat: -35.11631263163275),
-                                                                  weather: Weather(id: 2, main: "Rain", description: "Cloudy Night", icon: "02n"),
+                                                                  weather: Weather(id: 2, main: .Rain, description: "Cloudy Night", icon: "02n"),
                                                                   base: "",
                                                                   main: MainData(temp: 26,
                                                                                  feels_like: 546,
@@ -128,7 +138,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.0
                                                                   name: "Bragado",
                                                                   cod: 200),
                                     WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                                                                   weather: Weather(id: 2, main: "Clear", description: "Clear sky", icon: "01d"),
+                                                 weather: Weather(id: 2, main: .Clear, description: "Clear sky", icon: "01d"),
                                                                    base: "",
                                                                    main: MainData(temp: -10,
                                                                                   feels_like: 546,
@@ -147,7 +157,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.0
                                                                    name: "London",
                                                                    cod: 200),
                                     WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                                                                   weather: Weather(id: 2, main: "Rain", description: "Cloudy day", icon: "02d"),
+                                                                   weather: Weather(id: 2, main: .Snow, description: "Cloudy day", icon: "02d"),
                                                                    base: "",
                                                                    main: MainData(temp: 282.55,
                                                                                   feels_like: 546,

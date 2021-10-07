@@ -10,7 +10,11 @@ import SpriteKit
 
 struct HomeView: View {
     
-    @ObservedObject private var viewModel = HomeViewModel()
+    @ObservedObject private var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
@@ -18,16 +22,14 @@ struct HomeView: View {
                 .animation(.easeInOut, value: viewModel.getIndex())
                 .edgesIgnoringSafeArea(.all)
             
-            SceneSelectionView(weatherStatus: viewModel.weathers[viewModel.getIndex()].weather.main)
-                .transition(.opacity)
-                .edgesIgnoringSafeArea(.all)
+            SceneSelectorView(condition: viewModel.weathers[viewModel.getIndex()].weather.main)
                 
             GeometryReader { proxy in
                 VStack {
                     OffsetPageTabView(offset: $viewModel.offset) {
                         HStack(spacing: 0) {
-                            ForEach(viewModel.weathers, id: \.id) { weater in
-                                WeatherPageView(weather: weater)
+                            ForEach(viewModel.pageViewModels, id: \.id) { viewModel in
+                                WeatherPageView(viewModel: viewModel)
                                     .frame(width: proxy.size.width, height: proxy.size.height - 20)
                             }
                         }
@@ -58,6 +60,7 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        let vm = HomeViewModel()
+        HomeView(viewModel: vm)
     }
 }

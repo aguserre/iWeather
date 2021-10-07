@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 final class WeatherPageViewModel: ObservableObject {
-    private let weather: WeatherModel
-    
+    let id = UUID()
     //main
     @Published var mainTemp: String
     @Published var cityName: String
@@ -41,7 +41,6 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var longitude: Double
 
     init(weather: WeatherModel) {
-        self.weather = weather
         mainTemp = String(Int(weather.main.temp))
         cityName = weather.name
         weatherDescription = weather.weather.description
@@ -55,13 +54,14 @@ final class WeatherPageViewModel: ObservableObject {
         sunriseTime = "Sunrise: \(weather.sunriseInHours) Hs"
         pressure = weather.main.pressure
         humidity = "\(weather.main.humidity)%"
-        icon = weather.weather.icon
         latitude = weather.coord.lat
         longitude = weather.coord.long
+        icon = weather.weather.icon
     }
     
+    
     func getSpaces() -> CGFloat {
-        (10*CGFloat(String(weather.main.temp).count)) + 10
+        (15 * CGFloat(String(mainTemp).count)) + 15
     }
     
     func getTempViewModel() -> TempCardViewModel {
@@ -70,7 +70,8 @@ final class WeatherPageViewModel: ObservableObject {
                           spaces: getSpaces(),
                           weatherDescription: weatherDescription,
                           minTemp: minTemp,
-                          maxTemp: maxTemp)
+                          maxTemp: maxTemp,
+                          icon: icon)
     }
     
     func getVisibilityCardViewModel() -> SmallCardViewModel {

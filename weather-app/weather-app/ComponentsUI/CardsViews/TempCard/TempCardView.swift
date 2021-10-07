@@ -17,9 +17,21 @@ struct TempCardView: View {
     
     var body: some View {
         VStack(spacing: 5) {
-            Text(viewModel.cityName)
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            ZStack {
+                HStack {
+                    Image(uiImage: viewModel.imageWeather)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Spacer()
+                }
+                .offset(y: 50)
+                .padding()
+                
+                Text(viewModel.cityName)
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
+            }
             
             ZStack {
                 Text(viewModel.currentTemp)

@@ -10,7 +10,7 @@ import SwiftUI
 struct SunRotationView: View {
     
     @Binding var percent: CGFloat
-    @Binding var iconImage: UIImage
+    @Binding var iconImage: String
     
     private let circleHeight: CGFloat = 80
     private let colors: [Color] = [
@@ -42,8 +42,7 @@ struct SunRotationView: View {
             .rotationEffect(.degrees(-90))
             .frame(width: circleHeight, height: circleHeight)
             .overlay(
-                Image(uiImage: iconImage)
-                    .resizable()
+                RemoteImage(url: iconImage)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: pinHeight, height: pinHeight)
                     .offset(y: -pinHeight / 2)

@@ -10,17 +10,30 @@ import SwiftUI
 struct WeatherPageView: View {
     
     private var viewModel: WeatherPageViewModel
+    @State var animate = false
+
     
-    init(weather: WeatherModel) {
-        viewModel = WeatherPageViewModel(weather: weather)
+    init(viewModel: WeatherPageViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .center) {
-                TempCardView(viewModel: viewModel.getTempViewModel())
-                    .frame(height: 160)
-                
+                ZStack {
+                    HStack {
+                        RemoteImage(url: viewModel.icon)
+                            .frame(width: proxy.size.width / 3, height: proxy.size.width / 3)
+                            .aspectRatio(contentMode: .fit)
+                        
+                        Spacer()
+                    }.frame(width: proxy.size.width)
+                    
+                    .padding(.leading, 10)
+                    
+                    TempCardView(viewModel: viewModel.getTempViewModel())
+                        .frame(height: 160)
+                }
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 25) {
                         HStack(spacing: 10) {
@@ -47,15 +60,15 @@ struct WeatherPageView: View {
                     }
                 }
             }.frame(width: proxy.size.width)
-
-        }
+                
+        }.onAppear { animate.toggle() }
     }
-
 }
 
 struct WeatherPageView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherPageView(weather: weatherFakes[0])
+        let vm = WeatherPageViewModel(weather: weatherFakes[0])
+        WeatherPageView(viewModel: vm)
             .preferredColorScheme(.dark)
     }
 }

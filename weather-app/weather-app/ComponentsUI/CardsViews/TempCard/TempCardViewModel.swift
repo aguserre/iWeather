@@ -14,15 +14,16 @@ final class TempCardViewModel: ObservableObject {
     @Published var weatherDescription: String
     @Published var minTemp: String
     @Published var maxTemp: String
+    @Published var icon: String
+    @Published var imageWeather: UIImage = UIImage()
 
-    
-    init(cityName: String, currentTemp: String, spaces: CGFloat, weatherDescription: String, minTemp: String, maxTemp: String) {
+    init(cityName: String, currentTemp: String, spaces: CGFloat, weatherDescription: String, minTemp: String, maxTemp: String, icon: String) {
         self.cityName = cityName
         self.currentTemp = currentTemp
         self.spaces = spaces
         self.weatherDescription = weatherDescription
         self.minTemp = "L: \(minTemp)º"
         self.maxTemp = "H: \(maxTemp)º"
-        
+        self.icon = icon
     }
 }

@@ -11,9 +11,17 @@ import SpriteKit
 final class HomeViewModel: ObservableObject {
     @Published var offset: CGFloat = 0
     @Published var weathers: [WeatherModel]
+    @Published var pageViewModels: [WeatherPageViewModel] = []
     
     init() {
         weathers = weatherFakes
+        getPageViewModel()
+    }
+    
+    func getPageViewModel() {
+        weatherFakes.forEach { model in
+            pageViewModels.append(WeatherPageViewModel(weather: model))
+        }
     }
     
     func getIndex() -> Int {

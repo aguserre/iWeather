@@ -16,7 +16,6 @@ final class SunCardViewModel: ObservableObject {
     @Published var sunriseText: String
     @Published var percent: CGFloat = 0
     @Published var icon: String
-    @Published var imageWeather: UIImage = UIImage()
     
     init(currentPercent: CGFloat, isNight: Bool, sunsetText: String, sunriseText: String, icon: String) {
         self.currentPercent = currentPercent

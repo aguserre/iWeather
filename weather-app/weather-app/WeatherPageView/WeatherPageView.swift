@@ -25,6 +25,7 @@ struct WeatherPageView: View {
                     VStack(spacing: 25) {
                         HStack(spacing: 10) {
                             SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                            
                             SmallCardView(viewModel: viewModel.getWindCardViewModel())
                         }
                         
@@ -32,13 +33,17 @@ struct WeatherPageView: View {
                         
                         HStack(spacing: 10) {
                             SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                            
                             SmallCardView(viewModel: viewModel.getWindCardViewModel())
                         }
                         
                         HStack(spacing: 10) {
                             PressureCardView(viewModel: viewModel.getPressureCardViewModel())
+                            
                             SmallCardView(viewModel: viewModel.getHumidityCardViewModel())
                         }
+                        
+                        MapCardView(viewModel: viewModel.getMapCardViewModel())
                     }
                 }
             }.frame(width: proxy.size.width)

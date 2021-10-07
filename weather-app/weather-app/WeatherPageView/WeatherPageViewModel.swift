@@ -36,6 +36,10 @@ final class WeatherPageViewModel: ObservableObject {
     //Humidity
     @Published var humidity: String
     
+    //Map
+    @Published var latitude: Double
+    @Published var longitude: Double
+
     init(weather: WeatherModel) {
         self.weather = weather
         mainTemp = String(Int(weather.main.temp))
@@ -52,6 +56,8 @@ final class WeatherPageViewModel: ObservableObject {
         pressure = weather.main.pressure
         humidity = "\(weather.main.humidity)%"
         icon = weather.weather.icon
+        latitude = weather.coord.lat
+        longitude = weather.coord.long
     }
     
     func getSpaces() -> CGFloat {
@@ -101,6 +107,11 @@ final class WeatherPageViewModel: ObservableObject {
                            imagetitle: "wind",
                            description: humidity,
                            size: UIScreen.main.bounds.size)
+    }
+    
+    func getMapCardViewModel() -> MapCardViewModel {
+        MapCardViewModel(longitude: longitude,
+                         latitude: latitude)
     }
     
 }

@@ -86,7 +86,7 @@ struct Sys: Codable {
     let sunset: Int
 }
 
-var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, lat: 20),
+var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.08, lat: 37.39),
                                weather: Weather(id: 2, main: "Clear", description: "Clear Night", icon: "01n"),
                                base: "",
                                main: MainData(temp: 5,
@@ -106,7 +106,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: 20, la
                                name: "Mountain View",
                                cod: 200),
                                    
-                                   WeatherModel(coord: Coordinates(long: 20, lat: 20),
+                                   WeatherModel(coord: Coordinates(long: -60.49082007148439, lat: -35.11631263163275),
                                                                   weather: Weather(id: 2, main: "Other", description: "Cloudy Night", icon: "02n"),
                                                                   base: "",
                                                                   main: MainData(temp: 26,

@@ -32,6 +32,8 @@
 		D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */; };
 		D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A6270E81E400C5E183 /* ProgressBarView.swift */; };
 		D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AA270EAAE700C5E183 /* ImageDownloader.swift */; };
+		D35556AE270EACDA00C5E183 /* MapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AD270EACDA00C5E183 /* MapCardView.swift */; };
+		D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		D35556A6270E81E400C5E183 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D35556A8270E970900C5E183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D35556AA270EAAE700C5E183 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		D35556AD270EACDA00C5E183 /* MapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardView.swift; sourceTree = "<group>"; };
+		D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 		D355566A270DFF1D00C5E183 /* CardsViews */ = {
 			isa = PBXGroup;
 			children = (
+				D35556AC270EACC600C5E183 /* MapCard */,
 				D35556A1270E7E7B00C5E183 /* PressureCard */,
 				D3555698270E362F00C5E183 /* SunCard */,
 				D3555679270E15F700C5E183 /* SmallCard */,
@@ -261,6 +266,15 @@
 				D35556AA270EAAE700C5E183 /* ImageDownloader.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D35556AC270EACC600C5E183 /* MapCard */ = {
+			isa = PBXGroup;
+			children = (
+				D35556AD270EACDA00C5E183 /* MapCardView.swift */,
+				D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */,
+			);
+			path = MapCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +412,7 @@
 				D3555676270E144800C5E183 /* SmallCardView.swift in Sources */,
 				D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */,
 				D3166AED270CEC99009159BB /* HomeView.swift in Sources */,
+				D35556AE270EACDA00C5E183 /* MapCardView.swift in Sources */,
 				D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */,
 				D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */,
 				D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */,
@@ -405,6 +420,7 @@
 				D3555697270E193100C5E183 /* BlurView.swift in Sources */,
 				D3555664270DF00A00C5E183 /* OffsetPageTabView.swift in Sources */,
 				D3555667270DF08700C5E183 /* HomeViewModel.swift in Sources */,
+				D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */,
 				D355569A270E364D00C5E183 /* SunCardView.swift in Sources */,
 				D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */,
 				D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */,

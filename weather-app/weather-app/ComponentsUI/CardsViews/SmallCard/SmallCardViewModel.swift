@@ -1,5 +1,5 @@
 //
-//  SmalCardViewModel.swift
+//  SmallCardViewModel.swift
 //  weather-app
 //
 //  Created by Agustin Errecalde on 06/10/2021.

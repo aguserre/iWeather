@@ -27,7 +27,17 @@ struct WeatherPageView: View {
                             SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
                             SmallCardView(viewModel: viewModel.getWindCardViewModel())
                         }
-                        SunCardView(currentPercent: viewModel.sunState)
+                        
+                        SunCardView(viewModel: viewModel.getSunCardViewModel())
+                        
+                        HStack(spacing: 10) {
+                            SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                            SmallCardView(viewModel: viewModel.getWindCardViewModel())
+                        }
+                        
+                        HStack(spacing: 10) {
+                            PressureCardView(viewModel: viewModel.getPressureCardViewModel())
+                        }
                     }
                 }
             }.frame(width: proxy.size.width)

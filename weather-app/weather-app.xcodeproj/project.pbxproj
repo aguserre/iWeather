@@ -22,10 +22,15 @@
 		D3555671270E04DB00C5E183 /* TempCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555670270E04DB00C5E183 /* TempCardViewModel.swift */; };
 		D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555673270E05A900C5E183 /* WeatherPageViewModel.swift */; };
 		D3555676270E144800C5E183 /* SmallCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555675270E144800C5E183 /* SmallCardView.swift */; };
-		D3555678270E15E100C5E183 /* SmalCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555677270E15E100C5E183 /* SmalCardViewModel.swift */; };
+		D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555677270E15E100C5E183 /* SmallCardViewModel.swift */; };
 		D3555697270E193100C5E183 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555696270E193100C5E183 /* BlurView.swift */; };
 		D355569A270E364D00C5E183 /* SunCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555699270E364D00C5E183 /* SunCardView.swift */; };
 		D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569B270E4B1500C5E183 /* IntExtension.swift */; };
+		D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569D270E714000C5E183 /* SunCardViewModel.swift */; };
+		D35556A0270E737600C5E183 /* SunRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569F270E737600C5E183 /* SunRotationView.swift */; };
+		D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A2270E7EA900C5E183 /* PressureCardView.swift */; };
+		D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */; };
+		D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A6270E81E400C5E183 /* ProgressBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,10 +69,15 @@
 		D3555670270E04DB00C5E183 /* TempCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCardViewModel.swift; sourceTree = "<group>"; };
 		D3555673270E05A900C5E183 /* WeatherPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPageViewModel.swift; sourceTree = "<group>"; };
 		D3555675270E144800C5E183 /* SmallCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardView.swift; sourceTree = "<group>"; };
-		D3555677270E15E100C5E183 /* SmalCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmalCardViewModel.swift; sourceTree = "<group>"; };
+		D3555677270E15E100C5E183 /* SmallCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardViewModel.swift; sourceTree = "<group>"; };
 		D3555696270E193100C5E183 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		D3555699270E364D00C5E183 /* SunCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunCardView.swift; sourceTree = "<group>"; };
 		D355569B270E4B1500C5E183 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		D355569D270E714000C5E183 /* SunCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunCardViewModel.swift; sourceTree = "<group>"; };
+		D355569F270E737600C5E183 /* SunRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunRotationView.swift; sourceTree = "<group>"; };
+		D35556A2270E7EA900C5E183 /* PressureCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardView.swift; sourceTree = "<group>"; };
+		D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardViewModel.swift; sourceTree = "<group>"; };
+		D35556A6270E81E400C5E183 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +178,9 @@
 			children = (
 				D3555696270E193100C5E183 /* BlurView.swift */,
 				D3555663270DF00A00C5E183 /* OffsetPageTabView.swift */,
+				D355569F270E737600C5E183 /* SunRotationView.swift */,
 				D355566A270DFF1D00C5E183 /* CardsViews */,
+				D35556A6270E81E400C5E183 /* ProgressBarView.swift */,
 			);
 			path = ComponentsUI;
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 		D355566A270DFF1D00C5E183 /* CardsViews */ = {
 			isa = PBXGroup;
 			children = (
+				D35556A1270E7E7B00C5E183 /* PressureCard */,
 				D3555698270E362F00C5E183 /* SunCard */,
 				D3555679270E15F700C5E183 /* SmallCard */,
 				D355566F270E042A00C5E183 /* TempCard */,
@@ -213,7 +226,7 @@
 		D3555679270E15F700C5E183 /* SmallCard */ = {
 			isa = PBXGroup;
 			children = (
-				D3555677270E15E100C5E183 /* SmalCardViewModel.swift */,
+				D3555677270E15E100C5E183 /* SmallCardViewModel.swift */,
 				D3555675270E144800C5E183 /* SmallCardView.swift */,
 			);
 			path = SmallCard;
@@ -223,8 +236,18 @@
 			isa = PBXGroup;
 			children = (
 				D3555699270E364D00C5E183 /* SunCardView.swift */,
+				D355569D270E714000C5E183 /* SunCardViewModel.swift */,
 			);
 			path = SunCard;
+			sourceTree = "<group>";
+		};
+		D35556A1270E7E7B00C5E183 /* PressureCard */ = {
+			isa = PBXGroup;
+			children = (
+				D35556A2270E7EA900C5E183 /* PressureCardView.swift */,
+				D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */,
+			);
+			path = PressureCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,9 +381,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D355566E270DFF6100C5E183 /* TempCardView.swift in Sources */,
+				D35556A0270E737600C5E183 /* SunRotationView.swift in Sources */,
 				D3555676270E144800C5E183 /* SmallCardView.swift in Sources */,
-				D3555678270E15E100C5E183 /* SmalCardViewModel.swift in Sources */,
+				D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */,
 				D3166AED270CEC99009159BB /* HomeView.swift in Sources */,
+				D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */,
+				D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */,
 				D3166B16270CF19B009159BB /* Weather.swift in Sources */,
 				D3555697270E193100C5E183 /* BlurView.swift in Sources */,
 				D3555664270DF00A00C5E183 /* OffsetPageTabView.swift in Sources */,
@@ -368,6 +394,8 @@
 				D355569A270E364D00C5E183 /* SunCardView.swift in Sources */,
 				D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */,
 				D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */,
+				D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */,
+				D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */,
 				D3555669270DF0C100C5E183 /* WeatherPageView.swift in Sources */,
 				D3555671270E04DB00C5E183 /* TempCardViewModel.swift in Sources */,
 				D3166AEB270CEC99009159BB /* weather_appApp.swift in Sources */,

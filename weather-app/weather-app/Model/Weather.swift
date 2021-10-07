@@ -38,7 +38,7 @@ struct WeatherModel: Codable {
         return dt.convertToHourDay(timeFromGMT: tymezone)
     }
     
-    var sunsetInHouts: Int {
+    var sunsetInHours: Int {
         return sys.sunset.convertToHourDay(timeFromGMT: tymezone)
     }
     

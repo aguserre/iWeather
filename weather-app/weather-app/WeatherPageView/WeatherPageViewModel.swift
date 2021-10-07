@@ -24,8 +24,13 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var windVelocity: String
     
     //sun state
-    @Published var sunState: CGFloat
-
+    @Published var dayState: CGFloat
+    @Published var isNight: Bool
+    @Published var sunsetTime: String
+    @Published var sunriseTime: String
+    
+    //Pressure
+    @Published var pressure: Int
     
     init(weather: WeatherModel) {
         self.weather = weather
@@ -36,7 +41,11 @@ final class WeatherPageViewModel: ObservableObject {
         maxTemp = String(weather.main.temp_max)
         visibility = "\(weather.visibility) m"
         windVelocity = "\(weather.wind.speed) m/s"
-        sunState = CGFloat(weather.currentInHours*100/24)
+        dayState = CGFloat(weather.currentInHours*100/24)
+        isNight = weather.isNight
+        sunsetTime = "Sunset: \(weather.sunsetInHours) Hs"
+        sunriseTime = "Sunrise: \(weather.sunriseInHours) Hs"
+        pressure = weather.main.pressure
     }
     
     func getSpaces() -> CGFloat {
@@ -64,6 +73,20 @@ final class WeatherPageViewModel: ObservableObject {
                            imagetitle: "wind",
                            description: windVelocity,
                            size: UIScreen.main.bounds.size)
+    }
+    
+    func getSunCardViewModel() -> SunCardViewModel {
+        SunCardViewModel(currentPercent: dayState,
+                         isNight: isNight,
+                         sunsetText: sunsetTime,
+                         sunriseText: sunriseTime)
+    }
+    
+    func getPressureCardViewModel() -> PressureCardViewModel {
+        PressureCardViewModel(title: "Pressure",
+                              imagetitle: "thermometer.sun",
+                              preassure: pressure,
+                              size: UIScreen.main.bounds.size)
     }
     
 }

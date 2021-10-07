@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 final class HomeViewModel: ObservableObject {
     @Published var offset: CGFloat = 0
@@ -18,6 +19,7 @@ final class HomeViewModel: ObservableObject {
     func getIndex() -> Int {
         let progress = Int(round(offset / UIScreen.main.bounds.width))
         let index = min(Int(progress), weathers.count - 1)
+        
         return index
     }
     

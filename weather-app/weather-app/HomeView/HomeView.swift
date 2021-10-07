@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct HomeView: View {
     
@@ -15,6 +16,10 @@ struct HomeView: View {
         ZStack {
             Color(viewModel.weathers[viewModel.getIndex()].backGroundColor)
                 .animation(.easeInOut, value: viewModel.getIndex())
+                .edgesIgnoringSafeArea(.all)
+            
+            SceneSelectionView(weatherStatus: viewModel.weathers[viewModel.getIndex()].weather.main)
+                .transition(.opacity)
                 .edgesIgnoringSafeArea(.all)
                 
             GeometryReader { proxy in

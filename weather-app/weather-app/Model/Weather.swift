@@ -5,6 +5,8 @@
 //  Created by Agustin Errecalde on 05/10/2021.
 //
 
+import SpriteKit
+
 struct WeatherModel: Codable {
     let coord: Coordinates
     let weather: Weather
@@ -87,7 +89,7 @@ struct Sys: Codable {
 }
 
 var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.08, lat: 37.39),
-                               weather: Weather(id: 2, main: "Clear", description: "Clear Night", icon: "01n"),
+                               weather: Weather(id: 2, main: "Rain", description: "Clear Night", icon: "01n"),
                                base: "",
                                main: MainData(temp: 5,
                                               feels_like: 546,
@@ -107,7 +109,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.0
                                cod: 200),
                                    
                                    WeatherModel(coord: Coordinates(long: -60.49082007148439, lat: -35.11631263163275),
-                                                                  weather: Weather(id: 2, main: "Other", description: "Cloudy Night", icon: "02n"),
+                                                                  weather: Weather(id: 2, main: "Rain", description: "Cloudy Night", icon: "02n"),
                                                                   base: "",
                                                                   main: MainData(temp: 26,
                                                                                  feels_like: 546,
@@ -145,7 +147,7 @@ var weatherFakes: [WeatherModel] = [WeatherModel(coord: Coordinates(long: -122.0
                                                                    name: "London",
                                                                    cod: 200),
                                     WeatherModel(coord: Coordinates(long: 20, lat: 20),
-                                                                   weather: Weather(id: 2, main: "Other", description: "Cloudy day", icon: "02d"),
+                                                                   weather: Weather(id: 2, main: "Rain", description: "Cloudy day", icon: "02d"),
                                                                    base: "",
                                                                    main: MainData(temp: 282.55,
                                                                                   feels_like: 546,

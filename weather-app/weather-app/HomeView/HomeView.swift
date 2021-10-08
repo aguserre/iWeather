@@ -18,11 +18,11 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color(viewModel.weathers[viewModel.getIndex()].backGroundColor)
+            Color(viewModel.pageViewModels[viewModel.getIndex()].backgroundColor)
                 .animation(.easeInOut, value: viewModel.getIndex())
                 .edgesIgnoringSafeArea(.all)
-            
-            SceneSelectorView(condition: viewModel.weathers[viewModel.getIndex()].weather.main)
+
+            SceneSelectorView(condition: viewModel.pageViewModels[viewModel.getIndex()].weatherMainStatus)
                 
             GeometryReader { proxy in
                 VStack {
@@ -35,7 +35,7 @@ struct HomeView: View {
                         }
                     }
                     HStack(spacing: 12) {
-                        ForEach(viewModel.weathers.indices, id: \.self) { index in
+                        ForEach(viewModel.pageViewModels.indices, id: \.self) { index in
                             Capsule()
                                 .fill(.white)
                                 .frame(width: viewModel.getIndex() == index ? 20 : 7, height: 7)
@@ -49,18 +49,10 @@ struct HomeView: View {
                             .offset(x: viewModel.getIndicatorOffset())
                         ,alignment: .leading
                     )
-                    
                 }
                 .frame(maxWidth: .infinity, alignment: .top)
                 .frame(height: proxy.size.height)
             }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vm = HomeViewModel()
-        HomeView(viewModel: vm)
     }
 }

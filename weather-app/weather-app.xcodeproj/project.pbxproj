@@ -37,6 +37,7 @@
 		D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */; };
 		D35556B4270EB6CA00C5E183 /* RainSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = D35556B2270EB6CA00C5E183 /* RainSprite.sks */; };
 		D35556B7270EB81F00C5E183 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556B6270EB81F00C5E183 /* Scenes.swift */; };
+		D38E96CC270FAF35002698C9 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E96CB270FAF35002698C9 /* WeatherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardViewModel.swift; sourceTree = "<group>"; };
 		D35556B2270EB6CA00C5E183 /* RainSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainSprite.sks; sourceTree = "<group>"; };
 		D35556B6270EB81F00C5E183 /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		D38E96CB270FAF35002698C9 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				D35556AA270EAAE700C5E183 /* ImageDownloader.swift */,
+				D38E96CB270FAF35002698C9 /* WeatherService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */,
 				D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */,
 				D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */,
+				D38E96CC270FAF35002698C9 /* WeatherService.swift in Sources */,
 				D3042F32270F5F0E00BD4010 /* SceneSelectorView.swift in Sources */,
 				D3555669270DF0C100C5E183 /* WeatherPageView.swift in Sources */,
 				D3555671270E04DB00C5E183 /* TempCardViewModel.swift in Sources */,

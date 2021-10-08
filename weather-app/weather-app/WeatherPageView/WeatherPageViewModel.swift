@@ -16,6 +16,8 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var weatherDescription: String
     @Published var minTemp: String
     @Published var maxTemp: String
+    @Published var backgroundColor: String
+    @Published var weatherMainStatus: MainValues
     
     //visibility
     @Published var visibility: String
@@ -41,9 +43,10 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var longitude: Double
 
     init(weather: WeatherModel) {
+        backgroundColor = weather.backGroundColor
         mainTemp = String(Int(weather.main.temp))
         cityName = weather.name
-        weatherDescription = weather.weather.description
+        weatherDescription = weather.weather.first?.description ?? " "
         minTemp = String(weather.main.temp_min)
         maxTemp = String(weather.main.temp_max)
         visibility = "\(weather.visibility) m"
@@ -55,8 +58,9 @@ final class WeatherPageViewModel: ObservableObject {
         pressure = weather.main.pressure
         humidity = "\(weather.main.humidity)%"
         latitude = weather.coord.lat
-        longitude = weather.coord.long
-        icon = weather.weather.icon
+        longitude = weather.coord.lon
+        icon = weather.weather.first?.icon ?? "sun.fill"
+        weatherMainStatus = weather.weather.first?.main ?? .Clear
     }
     
     
@@ -68,7 +72,7 @@ final class WeatherPageViewModel: ObservableObject {
         TempCardViewModel(cityName: cityName,
                           currentTemp: mainTemp,
                           spaces: getSpaces(),
-                          weatherDescription: weatherDescription,
+                          weatherDescription: weatherDescription.capitalized,
                           minTemp: minTemp,
                           maxTemp: maxTemp,
                           icon: icon)

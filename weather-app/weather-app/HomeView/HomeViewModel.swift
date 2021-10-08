@@ -6,27 +6,20 @@
 //
 
 import SwiftUI
-import SpriteKit
+import Combine
 
 final class HomeViewModel: ObservableObject {
     @Published var offset: CGFloat = 0
-    @Published var weathers: [WeatherModel]
     @Published var pageViewModels: [WeatherPageViewModel] = []
-    
-    init() {
-        weathers = weatherFakes
-        getPageViewModel()
-    }
-    
-    func getPageViewModel() {
-        weatherFakes.forEach { model in
-            pageViewModels.append(WeatherPageViewModel(weather: model))
-        }
+    var cancellationToken: AnyCancellable?
+
+    init(pageViewModels: [WeatherPageViewModel]) {
+        self.pageViewModels = pageViewModels
     }
     
     func getIndex() -> Int {
         let progress = Int(round(offset / UIScreen.main.bounds.width))
-        let index = min(Int(progress), weathers.count - 1)
+        let index = min(Int(progress), pageViewModels.count - 1)
         
         return index
     }

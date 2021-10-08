@@ -10,8 +10,6 @@ import SwiftUI
 struct WeatherPageView: View {
     
     private var viewModel: WeatherPageViewModel
-    @State var animate = false
-
     
     init(viewModel: WeatherPageViewModel) {
         self.viewModel = viewModel
@@ -60,15 +58,6 @@ struct WeatherPageView: View {
                     }
                 }
             }.frame(width: proxy.size.width)
-                
-        }.onAppear { animate.toggle() }
-    }
-}
-
-struct WeatherPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vm = WeatherPageViewModel(weather: weatherFakes[0])
-        WeatherPageView(viewModel: vm)
-            .preferredColorScheme(.dark)
+        }
     }
 }

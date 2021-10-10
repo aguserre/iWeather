@@ -29,7 +29,7 @@ struct SunCardView: View {
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.white)
                     
-                    RemoteImage(url: viewModel.icon)
+                    RemoteImage(type: .icon(iconId: viewModel.icon))
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 40, height: 40)
                 }
@@ -40,7 +40,9 @@ struct SunCardView: View {
                 
                 Spacer()
                 
-                SunRotationView(percent: $viewModel.percent, iconImage: $viewModel.icon)
+                CurrentDayStatusView(percent: $viewModel.percent,
+                                     iconImage: $viewModel.icon,
+                                     currentTime: $viewModel.currentTime)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation(Animation.linear(duration: 1)) {
@@ -65,13 +67,5 @@ struct SunCardView: View {
             }.frame(width: UIScreen.main.bounds.width * 0.9)
         }
         .frame(width: UIScreen.main.bounds.width, height: 180)
-    }
-}
-
-struct SunCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vm = SunCardViewModel(currentPercent: 80, isNight: true, sunsetText: "Sunset: 22 Hs", sunriseText: "Sunrise: 22 Hs", icon: "")
-        SunCardView(viewModel: vm)
-            .preferredColorScheme(.dark)
     }
 }

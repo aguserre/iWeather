@@ -40,7 +40,7 @@ struct ProgressBarView: View {
                     .foregroundColor(Color(UIColor.systemIndigo))
                 
                 Circle()
-                    .foregroundColor(Color(UIColor.systemIndigo))
+                    .strokeBorder(Color(UIColor.systemIndigo), lineWidth: 5, antialiased: true)
                     .frame(width: 17, height: 17)
             }
         }

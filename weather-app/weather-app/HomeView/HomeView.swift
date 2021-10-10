@@ -23,6 +23,7 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.all)
 
             SceneSelectorView(condition: viewModel.pageViewModels[viewModel.getIndex()].weatherMainStatus)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             GeometryReader { proxy in
                 VStack {

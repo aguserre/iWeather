@@ -28,7 +28,7 @@
 		D355569A270E364D00C5E183 /* SunCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3555699270E364D00C5E183 /* SunCardView.swift */; };
 		D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569B270E4B1500C5E183 /* IntExtension.swift */; };
 		D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569D270E714000C5E183 /* SunCardViewModel.swift */; };
-		D35556A0270E737600C5E183 /* SunRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569F270E737600C5E183 /* SunRotationView.swift */; };
+		D35556A0270E737600C5E183 /* CurrentDayStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D355569F270E737600C5E183 /* CurrentDayStatusView.swift */; };
 		D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A2270E7EA900C5E183 /* PressureCardView.swift */; };
 		D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */; };
 		D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556A6270E81E400C5E183 /* ProgressBarView.swift */; };
@@ -37,7 +37,10 @@
 		D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */; };
 		D35556B4270EB6CA00C5E183 /* RainSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = D35556B2270EB6CA00C5E183 /* RainSprite.sks */; };
 		D35556B7270EB81F00C5E183 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556B6270EB81F00C5E183 /* Scenes.swift */; };
+		D370D3532710E0AC00710BFB /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D370D3522710E0AC00710BFB /* LoadingOverlay.swift */; };
 		D38E96CC270FAF35002698C9 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E96CB270FAF35002698C9 /* WeatherService.swift */; };
+		D39DE73C271234CD0051A542 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DE73B271234CD0051A542 /* MainView.swift */; };
+		D39DE73E2712593B0051A542 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DE73D2712593B0051A542 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +85,7 @@
 		D3555699270E364D00C5E183 /* SunCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunCardView.swift; sourceTree = "<group>"; };
 		D355569B270E4B1500C5E183 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		D355569D270E714000C5E183 /* SunCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunCardViewModel.swift; sourceTree = "<group>"; };
-		D355569F270E737600C5E183 /* SunRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunRotationView.swift; sourceTree = "<group>"; };
+		D355569F270E737600C5E183 /* CurrentDayStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayStatusView.swift; sourceTree = "<group>"; };
 		D35556A2270E7EA900C5E183 /* PressureCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardView.swift; sourceTree = "<group>"; };
 		D35556A4270E7ED600C5E183 /* PressureCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureCardViewModel.swift; sourceTree = "<group>"; };
 		D35556A6270E81E400C5E183 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
@@ -92,7 +95,10 @@
 		D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardViewModel.swift; sourceTree = "<group>"; };
 		D35556B2270EB6CA00C5E183 /* RainSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainSprite.sks; sourceTree = "<group>"; };
 		D35556B6270EB81F00C5E183 /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		D370D3522710E0AC00710BFB /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D38E96CB270FAF35002698C9 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		D39DE73B271234CD0051A542 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D39DE73D2712593B0051A542 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,7 @@
 		D3166AE9270CEC99009159BB /* weather-app */ = {
 			isa = PBXGroup;
 			children = (
+				D39DE73A271234B90051A542 /* MainView */,
 				D35556B1270EB69000C5E183 /* Animations */,
 				D35556A9270EAAD700C5E183 /* Services */,
 				D35556A8270E970900C5E183 /* Info.plist */,
@@ -196,9 +203,10 @@
 			children = (
 				D3555696270E193100C5E183 /* BlurView.swift */,
 				D3555663270DF00A00C5E183 /* OffsetPageTabView.swift */,
-				D355569F270E737600C5E183 /* SunRotationView.swift */,
+				D355569F270E737600C5E183 /* CurrentDayStatusView.swift */,
 				D355566A270DFF1D00C5E183 /* CardsViews */,
 				D35556A6270E81E400C5E183 /* ProgressBarView.swift */,
+				D370D3522710E0AC00710BFB /* LoadingOverlay.swift */,
 			);
 			path = ComponentsUI;
 			sourceTree = "<group>";
@@ -295,6 +303,15 @@
 				D35556B6270EB81F00C5E183 /* Scenes.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		D39DE73A271234B90051A542 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D39DE73B271234CD0051A542 /* MainView.swift */,
+				D39DE73D2712593B0051A542 /* MainViewModel.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,11 +446,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D355566E270DFF6100C5E183 /* TempCardView.swift in Sources */,
-				D35556A0270E737600C5E183 /* SunRotationView.swift in Sources */,
+				D39DE73C271234CD0051A542 /* MainView.swift in Sources */,
+				D35556A0270E737600C5E183 /* CurrentDayStatusView.swift in Sources */,
 				D3555676270E144800C5E183 /* SmallCardView.swift in Sources */,
 				D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */,
 				D3166AED270CEC99009159BB /* HomeView.swift in Sources */,
 				D35556B7270EB81F00C5E183 /* Scenes.swift in Sources */,
+				D39DE73E2712593B0051A542 /* MainViewModel.swift in Sources */,
 				D35556AE270EACDA00C5E183 /* MapCardView.swift in Sources */,
 				D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */,
 				D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */,
@@ -445,6 +464,7 @@
 				D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */,
 				D355569A270E364D00C5E183 /* SunCardView.swift in Sources */,
 				D355569C270E4B1500C5E183 /* IntExtension.swift in Sources */,
+				D370D3532710E0AC00710BFB /* LoadingOverlay.swift in Sources */,
 				D3555674270E05A900C5E183 /* WeatherPageViewModel.swift in Sources */,
 				D35556A5270E7ED600C5E183 /* PressureCardViewModel.swift in Sources */,
 				D35556A3270E7EA900C5E183 /* PressureCardView.swift in Sources */,

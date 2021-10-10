@@ -31,6 +31,10 @@ struct WeatherModel {
             return isNight ? "cloudyNight" : "cloudyDay"
         }
     }
+    var currentTime: String {
+        return dt.convertToCurrentTime(timeFromGMT: timezone)
+    }
+    
     var currentInHours: Int {
         return dt.convertToHourDay(timeFromGMT: timezone)
     }
@@ -41,34 +45,8 @@ struct WeatherModel {
         return sys.sunrise.convertToHourDay(timeFromGMT: timezone)
     }
     
-    static var placeHolder: WeatherModel {
-        return WeatherModel(coord: Coordinates(lon: -60.49082007148439,
-                                               lat: -35.11631263163275),
-                            weather: [Weather(id: 2,
-                                              main: .Rain,
-                                              description: "Cloudy Night",
-                                              icon: "02n")],
-                            base: "",
-                            main: MainData(temp: 26,
-                                           feels_like: 546,
-                                           temp_min: 200,
-                                           temp_max: 300,
-                                           pressure: 1023,
-                                           humidity: 100),
-                            visibility: 16093,
-                            wind: Wind(speed: 1.5,
-                                       deg: 2),
-                            clouds: Clouds(all: 1),
-                            dt: 25000,
-                            sys: Sys(type: 1,
-                                     id: 5122,
-                                     country: "US",
-                                     sunrise: 10000,
-                                     sunset: 20000),
-                            timezone: -25200,
-                            id: 42001,
-                            name: "Bragado",
-                            cod: 200)
+    static var placeHolder: HomeViewModel {
+        HomeViewModel(pageViewModels: [WeatherPageViewModel(weather: fakeWeather)])
     }
     
 }
@@ -149,7 +127,7 @@ extension Weather: Codable {
     }
 }
 
-enum MainValues: String, Codable {
+enum MainValues: String {
     case Rain = "Rain"
     case Thunderstorm = "Thunderstorm"
     case Drizzle = "Drizzle"
@@ -157,6 +135,12 @@ enum MainValues: String, Codable {
     case Atmosphere = "Atmosphere"
     case Clear = "Clear"
     case Clouds = "Clouds"
+    case unknown
+}
+extension MainValues: Codable {
+    public init(from decoder: Decoder) throws {
+        self = try MainValues(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+    }
 }
 
 struct MainData {
@@ -245,3 +229,31 @@ extension Sys: Codable {
         self.sunset = try container.decode(Int.self, forKey: .sunset)
     }
 }
+
+private let fakeWeather = WeatherModel(coord: Coordinates(lon: 0,
+                                              lat: 0),
+                           weather: [Weather(id: 0,
+                                             main: .Clear,
+                                             description: "- -",
+                                             icon: "-")],
+                           base: "",
+                           main: MainData(temp: 00,
+                                          feels_like: 0,
+                                          temp_min: 0,
+                                          temp_max: 0,
+                                          pressure: 0,
+                                          humidity: 0),
+                           visibility: 0,
+                           wind: Wind(speed: 0,
+                                      deg: 2),
+                           clouds: Clouds(all: 0),
+                           dt: 19000,
+                           sys: Sys(type: 1,
+                                    id: 5122,
+                                    country: "US",
+                                    sunrise: 0,
+                                    sunset: 0),
+                           timezone: -25200,
+                           id: 42001,
+                           name: "- -",
+                           cod: 200)

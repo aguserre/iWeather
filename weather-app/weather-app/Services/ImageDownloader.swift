@@ -17,11 +17,9 @@ struct RemoteImage: View {
         var data = Data()
         var state = LoadState.loading
 
-        init(icon: String) {
-            let urlComplete = "http://openweathermap.org/img/wn/\(icon).png"
-
-            guard let parsedURL = URL(string: urlComplete) else {
-                fatalError("Invalid URL: \(urlComplete)")
+        init(url: String) {
+            guard let parsedURL = URL(string: url) else {
+                fatalError("Invalid URL: \(url)")
             }
             
             URLSession.shared.dataTask(with: parsedURL) { data, response, error in
@@ -48,8 +46,17 @@ struct RemoteImage: View {
             .resizable()
     }
 
-    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "multiply.circle")) {
-        _loader = StateObject(wrappedValue: Loader(icon: url))
+    init(type: UrlType,
+         loading: Image = Image(systemName: "rays"),
+         failure: Image = Image(systemName: "rays")) {
+        var urlComplete = ""
+        switch type {
+        case .icon(let iconId):
+            urlComplete = "http://openweathermap.org/img/wn/\(iconId).png"
+        case .url(let urlString):
+            urlComplete = urlString
+        }
+        _loader = StateObject(wrappedValue: Loader(url: urlComplete))
         self.loading = loading
         self.failure = failure
     }
@@ -67,5 +74,12 @@ struct RemoteImage: View {
                 return failure
             }
         }
+    }
+}
+
+extension RemoteImage {
+    enum UrlType {
+        case icon(iconId: String)
+        case url(urlString: String)
     }
 }

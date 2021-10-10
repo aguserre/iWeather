@@ -20,7 +20,7 @@ struct WeatherPageView: View {
             VStack(alignment: .center) {
                 ZStack {
                     HStack {
-                        RemoteImage(url: viewModel.icon)
+                        RemoteImage(type: .icon(iconId: viewModel.icon))
                             .frame(width: proxy.size.width / 3, height: proxy.size.width / 3)
                             .aspectRatio(contentMode: .fit)
                         

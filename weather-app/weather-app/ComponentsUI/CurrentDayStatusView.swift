@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct SunRotationView: View {
+struct CurrentDayStatusView: View {
     
     @Binding var percent: CGFloat
     @Binding var iconImage: String
+    @Binding var currentTime: String
     
     private let circleHeight: CGFloat = 80
     private let colors: [Color] = [
@@ -27,7 +28,7 @@ struct SunRotationView: View {
     ]
      
     var body: some View {
-        let pinHeight = circleHeight * 0.5
+        let pinHeight = circleHeight * 0.4
         let completion = percent * 0.01
         Circle()
             .trim(from: 0, to: completion)
@@ -42,12 +43,20 @@ struct SunRotationView: View {
             .rotationEffect(.degrees(-90))
             .frame(width: circleHeight, height: circleHeight)
             .overlay(
-                RemoteImage(url: iconImage)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: pinHeight, height: pinHeight)
-                    .offset(y: -pinHeight / 2)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                    .rotationEffect(Angle(degrees: 360 * Double(completion)))
+                ZStack {
+                    Circle()
+                        .strokeBorder(Color(UIColor.systemIndigo), lineWidth: 5, antialiased: true)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: pinHeight, height: pinHeight)
+                        .offset(y: -pinHeight / 2)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        .rotationEffect(Angle(degrees: 360 * Double(completion)))
+                    
+                    Text("\(currentTime)\nHs")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                }
             )
     }
 }

@@ -29,6 +29,7 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var dayState: CGFloat
     @Published var isNight: Bool
     @Published var sunsetTime: String
+    @Published var currentTime: String
     @Published var sunriseTime: String
     @Published var icon: String
     
@@ -61,6 +62,7 @@ final class WeatherPageViewModel: ObservableObject {
         longitude = weather.coord.lon
         icon = weather.weather.first?.icon ?? "sun.fill"
         weatherMainStatus = weather.weather.first?.main ?? .Clear
+        currentTime = weather.currentTime
     }
     
     
@@ -97,12 +99,13 @@ final class WeatherPageViewModel: ObservableObject {
                          isNight: isNight,
                          sunsetText: sunsetTime,
                          sunriseText: sunriseTime,
-                         icon: icon)
+                         icon: icon,
+                         currentTime: currentTime)
     }
     
     func getPressureCardViewModel() -> PressureCardViewModel {
         PressureCardViewModel(title: "Pressure",
-                              imagetitle: "thermometer.sun",
+                              imagetitle: "barometer",
                               preassure: pressure,
                               size: UIScreen.main.bounds.size)
     }

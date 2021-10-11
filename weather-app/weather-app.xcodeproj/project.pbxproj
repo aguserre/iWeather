@@ -41,6 +41,7 @@
 		D38E96CC270FAF35002698C9 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E96CB270FAF35002698C9 /* WeatherService.swift */; };
 		D39DE73C271234CD0051A542 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DE73B271234CD0051A542 /* MainView.swift */; };
 		D39DE73E2712593B0051A542 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DE73D2712593B0051A542 /* MainViewModel.swift */; };
+		D3F299B7271401B10078B6BF /* StrokeCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F299B6271401B10078B6BF /* StrokeCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		D38E96CB270FAF35002698C9 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		D39DE73B271234CD0051A542 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D39DE73D2712593B0051A542 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		D3F299B6271401B10078B6BF /* StrokeCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				D355569F270E737600C5E183 /* CurrentDayStatusView.swift */,
 				D35556A6270E81E400C5E183 /* ProgressBarView.swift */,
 				D370D3522710E0AC00710BFB /* LoadingOverlay.swift */,
+				D3F299B6271401B10078B6BF /* StrokeCircleView.swift */,
 			);
 			path = ComponentsUI;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				D35556A7270E81E400C5E183 /* ProgressBarView.swift in Sources */,
 				D3166B16270CF19B009159BB /* Weather.swift in Sources */,
 				D3555697270E193100C5E183 /* BlurView.swift in Sources */,
+				D3F299B7271401B10078B6BF /* StrokeCircleView.swift in Sources */,
 				D3555664270DF00A00C5E183 /* OffsetPageTabView.swift in Sources */,
 				D3555667270DF08700C5E183 /* WeatherViewModel.swift in Sources */,
 				D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */,

@@ -45,23 +45,10 @@ struct CurrentDayStatusView: View {
             .frame(width: circleHeight, height: circleHeight)
             .overlay(
                 ZStack {
-                    ZStack {
-                        Circle()
-                            .strokeBorder(Color.white, lineWidth: 1, antialiased: true)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: pinHeight+1, height: pinHeight+1)
-                            .offset(y: -(pinHeight+1) / 2)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                            .rotationEffect(Angle(degrees: 360 * Double(completion)))
-                        
-                        Circle()
-                            .strokeBorder(Color(UIColor.systemIndigo), lineWidth: 5, antialiased: true)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: pinHeight, height: pinHeight)
-                            .offset(y: -pinHeight / 2)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                            .rotationEffect(Angle(degrees: 360 * Double(completion)))
-                    }
+                    StrokeCircleView(lineWidth: 5, height: pinHeight)
+                        .offset(y: -pinHeight / 2)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        .rotationEffect(Angle(degrees: 360 * Double(completion)))
                     
                     Text("\(currentTime)\nHs")
                         .font(.system(size: 12, weight: .medium))

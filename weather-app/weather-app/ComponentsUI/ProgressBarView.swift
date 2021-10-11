@@ -39,22 +39,14 @@ struct ProgressBarView: View {
                     .fill(LinearGradient(colors: colors, startPoint: .leading, endPoint: .trailing))
                     .frame(width: width , height: height)
                     .opacity(0.5)
-
                 }
+            
             HStack(spacing: -lineWidth - 1) {
                 Capsule()
                     .frame(width: CGFloat(value), height: height)
                     .foregroundColor(Color(UIColor.systemIndigo))
                 
-                ZStack {
-                    Circle()
-                        .strokeBorder(Color.white, lineWidth: 1, antialiased: true)
-                        .frame(width: 17, height: 17)
-                    
-                    Circle()
-                        .strokeBorder(Color(UIColor.systemIndigo), lineWidth: lineWidth, antialiased: true)
-                        .frame(width: 16, height: 16)
-                }
+                StrokeCircleView(lineWidth: lineWidth, height: 17)
             }
         }
     }

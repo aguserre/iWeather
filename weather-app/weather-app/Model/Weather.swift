@@ -134,7 +134,9 @@ enum MainValues: String {
     case Thunderstorm = "Thunderstorm"
     case Drizzle = "Drizzle"
     case Snow = "Snow"
-    case Atmosphere = "Atmosphere"
+    case Fog = "Fog"
+    case Smoke = "Smoke"
+    case Mist = "Mist"
     case Clear = "Clear"
     case Clouds = "Clouds"
     case unknown

@@ -10,7 +10,7 @@ import SpriteKit
 
 struct SceneSelectorView: View {
 
-    private var condition: MainValues
+    private let condition: MainValues
 
     init(condition: MainValues) {
         self.condition = condition
@@ -23,6 +23,13 @@ struct SceneSelectorView: View {
                 .edgesIgnoringSafeArea(.all)
                 .animation(.linear.delay(0.5))
         }
+        
+        if condition == .Thunderstorm {
+            EmitterView(type: .Thunderstorm)
+                .transition(.opacity)
+                .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
+        }
 
         if condition == .Snow {
             EmitterView(type: .Snow)
@@ -30,5 +37,27 @@ struct SceneSelectorView: View {
                 .edgesIgnoringSafeArea(.all)
                 .animation(.linear.delay(0.5))
         }
+        
+        if condition == .Drizzle {
+            EmitterView(type: .Drizzle)
+                .transition(.opacity)
+                .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
+        }
+        
+        if condition == .Fog || condition == .Smoke || condition == .Mist {
+            EmitterView(type: .Fog)
+                .transition(.opacity)
+                .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
+        }
+        
+        if condition == .Clouds {
+            EmitterView(type: .Clouds)
+                .transition(.opacity)
+                .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
+        }
+        
     }
 }

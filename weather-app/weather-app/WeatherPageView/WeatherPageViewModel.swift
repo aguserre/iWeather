@@ -11,6 +11,7 @@ import Combine
 final class WeatherPageViewModel: ObservableObject {
     let id = UUID()
     //main
+    @Published var isCurrentWeather: Bool
     @Published var mainTemp: String
     @Published var cityName: String
     @Published var weatherDescription: String
@@ -44,6 +45,7 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var longitude: Double
 
     init(weather: WeatherModel) {
+        isCurrentWeather = weather.isCurrent ?? false
         backgroundColor = weather.backGroundColor
         mainTemp = String(Int(weather.main.temp))
         cityName = weather.name

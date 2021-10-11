@@ -28,7 +28,7 @@ struct CurrentDayStatusView: View {
     ]
      
     var body: some View {
-        let pinHeight = circleHeight * 0.4
+        let pinHeight = circleHeight * 0.35
         let completion = percent * 0.01
         Circle()
             .trim(from: 0, to: completion)

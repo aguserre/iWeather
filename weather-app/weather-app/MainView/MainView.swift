@@ -19,18 +19,9 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if viewModel.resultStatus == .finished {
-                HomeView(viewModel: HomeViewModel(pageViewModels: viewModel.pageViewModels))
+                WeatherView(viewModel: WeatherViewModel(pageViewModels: viewModel.pageViewModels))
             } else {
-                HomeView(viewModel: WeatherModel.placeHolder)
-                    .alert(isPresented: $viewModel.showAlert) {
-                        Alert(
-                            title: Text("Error"),
-                            message: Text(viewModel.errorMessage),
-                            dismissButton: .default(Text(viewModel.alertButtonTitle), action: {
-                                viewModel.alertButtonTapped()
-                            })
-                        )
-                    }
+                WeatherView(viewModel: WeatherModel.placeHolder)
             }
             if viewModel.isLoading {
                 LoadingOverlaySUI()
@@ -39,8 +30,15 @@ struct MainView: View {
         }.onAppear {
             viewModel.fetch()
         }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.errorMessage),
+                dismissButton: .default(Text(viewModel.alertButtonTitle), action: {
+                    viewModel.alertButtonTapped()
+                })
+            )
+        }
     }
-    
-
 }
 

@@ -19,6 +19,8 @@ struct WeatherModel {
     let id: Int
     let name: String
     let cod: Int
+    var isCurrent: Bool?
+    
     var isNight: Bool {
         let dayRange = self.sys.sunrise...self.sys.sunset
         return !dayRange.contains(self.dt)
@@ -45,8 +47,8 @@ struct WeatherModel {
         return sys.sunrise.convertToHourDay(timeFromGMT: timezone)
     }
     
-    static var placeHolder: HomeViewModel {
-        HomeViewModel(pageViewModels: [WeatherPageViewModel(weather: fakeWeather)])
+    static var placeHolder: WeatherViewModel {
+        WeatherViewModel(pageViewModels: [WeatherPageViewModel(weather: fakeWeather)])
     }
     
 }
@@ -204,8 +206,6 @@ extension Clouds: Codable {
     }
 }
 struct Sys {
-    let type: Int
-    let id: Int
     let country: String
     let sunrise: Int
     let sunset: Int
@@ -213,8 +213,6 @@ struct Sys {
 
 extension Sys: Codable {
     enum CodingKeys: String, CodingKey {
-        case type
-        case id
         case country
         case sunrise
         case sunset
@@ -222,8 +220,6 @@ extension Sys: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.type = try container.decode(Int.self, forKey: .type)
-        self.id = try container.decode(Int.self, forKey: .id)
         self.country = try container.decode(String.self, forKey: .country)
         self.sunrise = try container.decode(Int.self, forKey: .sunrise)
         self.sunset = try container.decode(Int.self, forKey: .sunset)
@@ -248,12 +244,10 @@ private let fakeWeather = WeatherModel(coord: Coordinates(lon: 0,
                                       deg: 2),
                            clouds: Clouds(all: 0),
                            dt: 19000,
-                           sys: Sys(type: 1,
-                                    id: 5122,
-                                    country: "US",
+                           sys: Sys(country: "US",
                                     sunrise: 0,
                                     sunset: 0),
                            timezone: -25200,
                            id: 42001,
                            name: "- -",
-                           cod: 200)
+                                       cod: 200)

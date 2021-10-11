@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class HomeViewModel: ObservableObject {
+final class WeatherViewModel: ObservableObject {
     @Published var offset: CGFloat = 0
     @Published var pageViewModels: [WeatherPageViewModel] = []
     var cancellationToken: AnyCancellable?
@@ -29,6 +29,10 @@ final class HomeViewModel: ObservableObject {
         let maxWidth: CGFloat = 12 + 7
         
         return progress * maxWidth
+    }
+    
+    func isSelected(index: Int) -> Bool {
+        return getIndex() == index
     }
     
 }

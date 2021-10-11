@@ -8,12 +8,14 @@
 import SwiftUI
 
 final class PressureCardViewModel: ObservableObject {
-    private let spacing: CGFloat = 25
+    private let spacing: CGFloat = 20
+    private let maxPressure = 1500
+    let currentProgress: Float
+
     @Published var width: CGFloat
     @Published var title: String
     @Published var imageTitle: String
     @Published var description: String
-    var currentProgress: Float
     @Published var progressValue: Float = 0
     
     init(title: String, imagetitle: String, preassure: Int, size: CGSize) {
@@ -21,6 +23,8 @@ final class PressureCardViewModel: ObservableObject {
         self.imageTitle = imagetitle
         self.description = "\(preassure) hPa"
         self.width = size.width/2 - spacing
-        self.currentProgress = Float(((preassure * Int(size.width/2 - spacing)+1000) / 3000))
+        
+        let progressPercent = Float(preassure * 100) / Float(maxPressure)
+        self.currentProgress =  (progressPercent * Float(size.width/2 - spacing)) / 100
     }
 }

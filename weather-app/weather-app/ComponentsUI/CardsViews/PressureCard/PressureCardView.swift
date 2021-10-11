@@ -44,7 +44,7 @@ struct PressureCardView: View {
                 Spacer()
                 
                 VStack {
-                    ProgressBarView(value: $viewModel.progressValue, width: viewModel.width - 10)
+                    ProgressBarView(value: $viewModel.progressValue, width: viewModel.width - 20)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 withAnimation(Animation.linear(duration: 0.5)) {
@@ -59,13 +59,5 @@ struct PressureCardView: View {
                 Spacer()
             }
         }.frame(width: viewModel.width, height: 100)
-    }
-}
-
-struct PressureCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vm = PressureCardViewModel(title: "Pressure", imagetitle: "thermometer.sun", preassure: 1500, size: UIScreen.main.bounds.size)
-        PressureCardView(viewModel: vm)
-            .preferredColorScheme(.dark)
     }
 }

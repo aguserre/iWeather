@@ -35,7 +35,8 @@ struct WeatherView: View {
                             }
                         }
                     }
-                    HStack(alignment: .center, spacing: 11) {
+
+                    HStack(alignment: .center, spacing: 15) {
                         ForEach(viewModel.pageViewModels.indices, id: \.self) { index in
                             if viewModel.pageViewModels[index].isCurrentWeather {
                                 Image(systemName: "location")
@@ -55,7 +56,7 @@ struct WeatherView: View {
                     .animation(.default)
                 }
                 .frame(maxWidth: .infinity, alignment: .top)
-                .frame(height: proxy.size.height)
+                .frame(width: proxy.size.width, height: proxy.size.height)
             }
         }
     }

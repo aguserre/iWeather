@@ -18,6 +18,7 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var minTemp: String
     @Published var maxTemp: String
     @Published var backgroundColor: String
+    @Published var intensity: CGFloat
     @Published var weatherMainStatus: MainValues
     
     //visibility
@@ -45,6 +46,8 @@ final class WeatherPageViewModel: ObservableObject {
     @Published var longitude: Double
 
     init(weather: WeatherModel) {
+        let mainWeather = weather.weather.first?.main
+        intensity = mainWeather == .Rain ? 200 : (mainWeather == .Snow ? 20 : 0)
         isCurrentWeather = weather.isCurrent ?? false
         backgroundColor = weather.backGroundColor
         mainTemp = String(Int(weather.main.temp))
@@ -63,7 +66,7 @@ final class WeatherPageViewModel: ObservableObject {
         latitude = weather.coord.lat
         longitude = weather.coord.lon
         icon = weather.weather.first?.icon ?? "sun.fill"
-        weatherMainStatus = weather.weather.first?.main ?? .Clear
+        weatherMainStatus = mainWeather ?? .Clear
         currentTime = weather.currentTime
     }
     

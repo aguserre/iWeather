@@ -9,24 +9,26 @@ import SwiftUI
 import SpriteKit
 
 struct SceneSelectorView: View {
-    
+
     private var condition: MainValues
 
     init(condition: MainValues) {
         self.condition = condition
     }
-    
+
     var body: some View {
         if condition == .Rain {
-            SpriteView(scene: RainSprite(rainIntensity: .intermediate), options: [.allowsTransparency])
+            EmitterView(type: .Rain)
                 .transition(.opacity)
                 .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
         }
-        
+
         if condition == .Snow {
-            SpriteView(scene: RainSprite(rainIntensity: .moderate), options: [.allowsTransparency])
+            EmitterView(type: .Snow)
                 .transition(.opacity)
                 .edgesIgnoringSafeArea(.all)
+                .animation(.linear.delay(0.5))
         }
     }
 }

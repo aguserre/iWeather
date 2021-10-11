@@ -35,8 +35,7 @@
 		D35556AB270EAAE700C5E183 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AA270EAAE700C5E183 /* ImageDownloader.swift */; };
 		D35556AE270EACDA00C5E183 /* MapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AD270EACDA00C5E183 /* MapCardView.swift */; };
 		D35556B0270EB15D00C5E183 /* MapCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */; };
-		D35556B4270EB6CA00C5E183 /* RainSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = D35556B2270EB6CA00C5E183 /* RainSprite.sks */; };
-		D35556B7270EB81F00C5E183 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556B6270EB81F00C5E183 /* Scenes.swift */; };
+		D35556B7270EB81F00C5E183 /* EmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35556B6270EB81F00C5E183 /* EmitterView.swift */; };
 		D370D3532710E0AC00710BFB /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D370D3522710E0AC00710BFB /* LoadingOverlay.swift */; };
 		D38E96CC270FAF35002698C9 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E96CB270FAF35002698C9 /* WeatherService.swift */; };
 		D39DE73C271234CD0051A542 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39DE73B271234CD0051A542 /* MainView.swift */; };
@@ -94,8 +93,7 @@
 		D35556AA270EAAE700C5E183 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		D35556AD270EACDA00C5E183 /* MapCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardView.swift; sourceTree = "<group>"; };
 		D35556AF270EB15D00C5E183 /* MapCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardViewModel.swift; sourceTree = "<group>"; };
-		D35556B2270EB6CA00C5E183 /* RainSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainSprite.sks; sourceTree = "<group>"; };
-		D35556B6270EB81F00C5E183 /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		D35556B6270EB81F00C5E183 /* EmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterView.swift; sourceTree = "<group>"; };
 		D370D3522710E0AC00710BFB /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D38E96CB270FAF35002698C9 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		D39DE73B271234CD0051A542 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -203,6 +201,7 @@
 				D35556A6270E81E400C5E183 /* ProgressBarView.swift */,
 				D370D3522710E0AC00710BFB /* LoadingOverlay.swift */,
 				D3F299B6271401B10078B6BF /* StrokeCircleView.swift */,
+				D35556B6270EB81F00C5E183 /* EmitterView.swift */,
 			);
 			path = ComponentsUI;
 			sourceTree = "<group>";
@@ -292,15 +291,6 @@
 			path = MapCard;
 			sourceTree = "<group>";
 		};
-		D35556B1270EB69000C5E183 /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				D35556B2270EB6CA00C5E183 /* RainSprite.sks */,
-				D35556B6270EB81F00C5E183 /* Scenes.swift */,
-			);
-			path = Animations;
-			sourceTree = "<group>";
-		};
 		D39DE73A271234B90051A542 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,7 +303,6 @@
 		D39DE73F2713D2250051A542 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				D35556B1270EB69000C5E183 /* Animations */,
 				D3166AF0270CEC9C009159BB /* Preview Content */,
 				D35556A8270E970900C5E183 /* Info.plist */,
 				D3166AEA270CEC99009159BB /* weather_appApp.swift */,
@@ -438,7 +427,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3166AF2270CEC9C009159BB /* Preview Assets.xcassets in Resources */,
-				D35556B4270EB6CA00C5E183 /* RainSprite.sks in Resources */,
 				D3166AEF270CEC9C009159BB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +458,7 @@
 				D3555676270E144800C5E183 /* SmallCardView.swift in Sources */,
 				D3555678270E15E100C5E183 /* SmallCardViewModel.swift in Sources */,
 				D3166AED270CEC99009159BB /* WeatherView.swift in Sources */,
-				D35556B7270EB81F00C5E183 /* Scenes.swift in Sources */,
+				D35556B7270EB81F00C5E183 /* EmitterView.swift in Sources */,
 				D39DE73E2712593B0051A542 /* MainViewModel.swift in Sources */,
 				D35556AE270EACDA00C5E183 /* MapCardView.swift in Sources */,
 				D355569E270E714100C5E183 /* SunCardViewModel.swift in Sources */,

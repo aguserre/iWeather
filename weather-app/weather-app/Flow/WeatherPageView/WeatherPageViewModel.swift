@@ -68,6 +68,10 @@ final class WeatherPageViewModel: ObservableObject {
         icon = weather.weather.first?.icon ?? "sun.fill"
         weatherMainStatus = mainWeather ?? .Clear
         currentTime = weather.currentTime
+        
+        guard let isCurrent = weather.isCurrent,
+        isCurrent else { return }
+        AppData.lastCurrentWeather = weather
     }
     
     

@@ -48,7 +48,15 @@ struct WeatherModel {
     }
     
     static var placeHolder: WeatherViewModel {
-        WeatherViewModel(pageViewModels: [WeatherPageViewModel(weather: fakeWeather)])
+        WeatherViewModel(pageViewModels: [WeatherPageViewModel(weather: lastWeatherSaved)])
+    }
+    
+    static var citySavedIds: [String] {
+        ["2643743", "3441575", "3433955"]
+    }
+    
+    static var lastWeatherSaved: WeatherModel {
+        AppData.lastCurrentWeather
     }
     
 }
@@ -227,29 +235,3 @@ extension Sys: Codable {
         self.sunset = try container.decode(Int.self, forKey: .sunset)
     }
 }
-
-private let fakeWeather = WeatherModel(coord: Coordinates(lon: 0,
-                                              lat: 0),
-                           weather: [Weather(id: 0,
-                                             main: .Clear,
-                                             description: "- -",
-                                             icon: "-")],
-                           base: "",
-                           main: MainData(temp: 00,
-                                          feels_like: 0,
-                                          temp_min: 0,
-                                          temp_max: 0,
-                                          pressure: 0,
-                                          humidity: 0),
-                           visibility: 0,
-                           wind: Wind(speed: 0,
-                                      deg: 2),
-                           clouds: Clouds(all: 0),
-                           dt: 19000,
-                           sys: Sys(country: "US",
-                                    sunrise: 0,
-                                    sunset: 0),
-                           timezone: -25200,
-                           id: 42001,
-                           name: "- -",
-                                       cod: 200)

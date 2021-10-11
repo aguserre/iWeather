@@ -11,7 +11,7 @@ import Combine
 
 final class MainViewModel: NSObject, ObservableObject {
     private let service = WeatherService()
-    private let savedIds = ["2643743", "3441575", "3433955"]
+    private let savedIds = WeatherModel.citySavedIds
     private var retrysCount = 0
     private let maxIntents = 3
     private var locationManager: CLLocationManager?
@@ -103,6 +103,7 @@ extension MainViewModel {
         savedIds.forEach { id in
             publishers.append(service.getWeathersInfo(fetchType: .byId(id: id), metrics: .celcius))
         }
+        
         if let location = coordinates {
             publishers.append(service.getWeathersInfo(fetchType: .coordinates(lon: location.longitude,
                                                                               lat: location.latitude),

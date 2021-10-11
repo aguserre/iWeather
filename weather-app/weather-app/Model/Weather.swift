@@ -52,7 +52,7 @@ struct WeatherModel {
     }
     
     static var citySavedIds: [String] {
-        ["2643743", "3441575", "3433955"]
+        AppData.savedIds
     }
     
     static var lastWeatherSaved: WeatherModel {

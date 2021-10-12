@@ -12,9 +12,8 @@ struct ApiClient: Requestable {
     func make(
         _ fetchType: FetchType
     ) -> AnyPublisher<WeatherModel, Error> {
-        let baseUrl = ApiUrlBase.weatherById
         var isCurrentWeather = false
-        guard let weatherUrl = URL(string: baseUrl.rawValue) else { fatalError("Invalid URL") }
+        guard let weatherUrl = URL(string: ApiUrlBase.weatherById.rawValue) else { fatalError("Invalid URL") }
         
         guard var components = URLComponents(url: weatherUrl, resolvingAgainstBaseURL: true) else { fatalError("Couldn't create URLComponents") }
         var queryItems = [URLQueryItem]()

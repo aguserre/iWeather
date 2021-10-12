@@ -169,10 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				D39DE7402713D2CF0051A542 /* Flow */,
-				D39DE73F2713D2250051A542 /* Resourses */,
 				D35556A9270EAAD700C5E183 /* Services */,
 				D3166B14270CF175009159BB /* Model */,
-				D3555662270DEFCE00C5E183 /* ComponentsUI */,
+				D39DE73F2713D2250051A542 /* Resourses */,
 			);
 			path = "weather-app";
 			sourceTree = "<group>";
@@ -348,6 +347,7 @@
 		D39DE73F2713D2250051A542 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				D3555662270DEFCE00C5E183 /* ComponentsUI */,
 				D36CC415271610390008F7E6 /* Extensions */,
 				D3166AF0270CEC9C009159BB /* Preview Content */,
 				D35556A8270E970900C5E183 /* Info.plist */,

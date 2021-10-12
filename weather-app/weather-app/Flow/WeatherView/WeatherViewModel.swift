@@ -9,7 +9,7 @@ import SwiftUI
 
 final class WeatherViewModel: ObservableObject {
     @Published var offset: CGFloat = 0
-    @Published var pageViewModels: [WeatherPageViewModel] = []
+    @Published var pageViewModels: [WeatherPageViewModel]
 
     init(pageViewModels: [WeatherPageViewModel]) {
         self.pageViewModels = pageViewModels

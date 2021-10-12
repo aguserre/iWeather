@@ -1,5 +1,5 @@
 //
-//  SmallCard.swift
+//  GenericCard.swift
 //  weather-app
 //
 //  Created by Agustin Errecalde on 06/10/2021.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct SmallCardView: View {
+struct GenericCard: View {
     
-    private var viewModel: SmallCardViewModel
+    private var viewModel: GenericCardViewModel
     
-    init(viewModel: SmallCardViewModel) {
+    init(viewModel: GenericCardViewModel) {
         self.viewModel = viewModel
     }
     

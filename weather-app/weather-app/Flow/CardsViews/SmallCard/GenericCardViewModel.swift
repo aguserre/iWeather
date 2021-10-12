@@ -1,5 +1,5 @@
 //
-//  SmallCardViewModel.swift
+//  GenericCardViewModel.swift
 //  weather-app
 //
 //  Created by Agustin Errecalde on 06/10/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class SmallCardViewModel: ObservableObject {
+final class GenericCardViewModel: ObservableObject {
     private let spacing: CGFloat = 25
     @Published var title: String
     @Published var imageTitle: String

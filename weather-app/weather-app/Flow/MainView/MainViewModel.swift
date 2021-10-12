@@ -10,21 +10,40 @@ import CoreLocation
 import Combine
 
 final class MainViewModel: NSObject, ObservableObject {
-    private let service = WeatherService()
-    private let savedIds = WeatherModel.citySavedIds
-    private var retrysCount = 0
-    private let maxIntents = 3
+    private let service: WeatherService
+    private let savedIds: [String]
+    private var retrysCount: Int
+    private let maxIntents: Int
     private var locationManager: CLLocationManager?
-    private var publishers = [AnyPublisher<WeatherModel, Error>]()
+    private var publishers: [AnyPublisher<WeatherModel, Error>]
     
     @Published private var coordinates: CLLocationCoordinate2D?
-    @Published private var cancellable = Set<AnyCancellable>()
-    @Published var resultStatus: ResultStatus = .none
-    @Published var weatherViewModel: WeatherViewModel = WeatherModel.placeHolder
-    @Published var errorMessage: String = ""
-    @Published var showAlert: Bool = false
-    @Published var isLoading: Bool = true
-    @Published var errorType: ErrorTypes = .none
+    @Published private var cancellable: Set<AnyCancellable>
+    
+    @Published var resultStatus: ResultStatus
+    @Published var weatherViewModel: WeatherViewModel
+    @Published var errorMessage: String
+    @Published var showAlert: Bool
+    @Published var isLoading: Bool
+    @Published var errorType: ErrorTypes
+    
+    override init() {
+        service = WeatherService()
+        savedIds = WeatherModel.citySavedIds
+        retrysCount = 0
+        maxIntents = 3
+        publishers = [AnyPublisher<WeatherModel, Error>]()
+        cancellable = Set<AnyCancellable>()
+        resultStatus = .none
+        weatherViewModel = WeatherModel.placeHolder
+        errorMessage = ""
+        showAlert = false
+        isLoading = true
+        errorType = .none
+        
+        super.init()
+        setupLocationManager()
+    }
     
     enum ErrorTypes {
         case location, service, other, none
@@ -36,11 +55,6 @@ final class MainViewModel: NSObject, ObservableObject {
     
     enum ResultStatus {
         case finished, none
-    }
-
-    override init() {
-        super.init()
-        setupLocationManager()
     }
     
     func alertButtonTapped() {
@@ -86,6 +100,7 @@ final class MainViewModel: NSObject, ObservableObject {
     
 }
 
+//Service call
 extension MainViewModel {
     private func getWeathers() {
         if !publishers.isEmpty { publishers.removeAll() }
@@ -116,10 +131,6 @@ extension MainViewModel {
         }
     }
     
-    func updateViewModel() {
-        
-    }
-    
     private func fillPublishers(completion: @escaping ()->(Void)) {
         savedIds.forEach { id in
             publishers.append(service.getWeathersInfo(fetchType: .byId(id: id)))
@@ -133,6 +144,7 @@ extension MainViewModel {
     }
 }
 
+//Location Manager
 extension MainViewModel: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         isLoading = true
@@ -147,7 +159,7 @@ extension MainViewModel: CLLocationManagerDelegate {
         }
     }
     
-    func checkPermissions() {
+    private func checkPermissions() {
         guard let locationManager = locationManager else {
             getWeathers()
             return

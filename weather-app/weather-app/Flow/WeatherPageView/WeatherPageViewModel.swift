@@ -10,40 +10,29 @@ import Combine
 
 final class WeatherPageViewModel: ObservableObject {
     let id = UUID()
-    //main
+    private var mainTemp: String
+    private var cityName: String
+    private var weatherDescription: String
+    private var minTemp: String
+    private var maxTemp: String
+    private var intensity: CGFloat
+    private var visibility: String
+    private var windVelocity: String
+    private var dayState: CGFloat
+    private var isNight: Bool
+    private var sunsetTime: String
+    private var currentTime: String
+    private var sunriseTime: String
+    private var pressure: Int
+    private var humidity: String
+    private var latitude: Double
+    private var longitude: Double
+    
     @Published var isCurrentWeather: Bool
-    @Published var mainTemp: String
-    @Published var cityName: String
-    @Published var weatherDescription: String
-    @Published var minTemp: String
-    @Published var maxTemp: String
-    @Published var backgroundColor: String
-    @Published var intensity: CGFloat
     @Published var weatherMainStatus: MainValues
-    
-    //visibility
-    @Published var visibility: String
-    
-    //wind
-    @Published var windVelocity: String
-    
-    //sun state
-    @Published var dayState: CGFloat
-    @Published var isNight: Bool
-    @Published var sunsetTime: String
-    @Published var currentTime: String
-    @Published var sunriseTime: String
     @Published var icon: String
-    
-    //Pressure
-    @Published var pressure: Int
-    
-    //Humidity
-    @Published var humidity: String
-    
-    //Map
-    @Published var latitude: Double
-    @Published var longitude: Double
+    @Published var backgroundColor: String
+
 
     init(weather: WeatherModel) {
         let mainWeather = weather.weather.first?.main
@@ -89,15 +78,15 @@ final class WeatherPageViewModel: ObservableObject {
                           icon: icon)
     }
     
-    func getVisibilityCardViewModel() -> SmallCardViewModel {
-        SmallCardViewModel(title: "Visibility",
+    func getVisibilityCardViewModel() -> GenericCardViewModel {
+        GenericCardViewModel(title: "Visibility",
                            imagetitle: "eye",
                            description: visibility,
                            size: UIScreen.main.bounds.size)
     }
     
-    func getWindCardViewModel() -> SmallCardViewModel {
-        SmallCardViewModel(title: "Wind",
+    func getWindCardViewModel() -> GenericCardViewModel {
+        GenericCardViewModel(title: "Wind",
                            imagetitle: "wind",
                            description: windVelocity,
                            size: UIScreen.main.bounds.size)
@@ -119,8 +108,8 @@ final class WeatherPageViewModel: ObservableObject {
                               size: UIScreen.main.bounds.size)
     }
     
-    func getHumidityCardViewModel() -> SmallCardViewModel {
-        SmallCardViewModel(title: "Humidity",
+    func getHumidityCardViewModel() -> GenericCardViewModel {
+        GenericCardViewModel(title: "Humidity",
                            imagetitle: "wind",
                            description: humidity,
                            size: UIScreen.main.bounds.size)

@@ -34,28 +34,29 @@ struct WeatherPageView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 25) {
                     HStack(spacing: 10) {
-                        SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                        GenericCard(viewModel: viewModel.getVisibilityCardViewModel())
                         
-                        SmallCardView(viewModel: viewModel.getWindCardViewModel())
+                        GenericCard(viewModel: viewModel.getWindCardViewModel())
                     }
                     
                     SunCardView(viewModel: viewModel.getSunCardViewModel())
                     
                     HStack(spacing: 10) {
-                        SmallCardView(viewModel: viewModel.getVisibilityCardViewModel())
+                        GenericCard(viewModel: viewModel.getVisibilityCardViewModel())
                         
-                        SmallCardView(viewModel: viewModel.getWindCardViewModel())
+                        GenericCard(viewModel: viewModel.getWindCardViewModel())
                     }
                     
                     HStack(spacing: 10) {
                         PressureCardView(viewModel: viewModel.getPressureCardViewModel())
                         
-                        SmallCardView(viewModel: viewModel.getHumidityCardViewModel())
+                        GenericCard(viewModel: viewModel.getHumidityCardViewModel())
                     }
                     
                     MapCardView(viewModel: viewModel.getMapCardViewModel())
                 }
             }
+            .frame(width: UIScreen.main.bounds.width)
         }
     }
 }

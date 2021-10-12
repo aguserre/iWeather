@@ -17,15 +17,15 @@ struct WeatherView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(viewModel.pageViewModels[viewModel.getIndex()].backgroundColor)
-                .animation(.easeInOut, value: viewModel.getIndex())
-                .edgesIgnoringSafeArea(.all)
+        GeometryReader { proxy in
+            ZStack {
+                Color(viewModel.pageViewModels[viewModel.getIndex()].backgroundColor)
+                    .animation(.easeInOut, value: viewModel.getIndex())
+                    .edgesIgnoringSafeArea(.all)
 
-            SceneSelectorView(condition: viewModel.pageViewModels[viewModel.getIndex()].weatherMainStatus)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                SceneSelectorView(condition: viewModel.pageViewModels[viewModel.getIndex()].weatherMainStatus)
+                    .edgesIgnoringSafeArea(.all)
                 
-            GeometryReader { proxy in
                 VStack {
                     OffsetPageTabView(offset: $viewModel.offset) {
                         HStack(spacing: 0) {
@@ -35,7 +35,7 @@ struct WeatherView: View {
                             }
                         }
                     }
-
+                    
                     HStack(alignment: .center, spacing: 15) {
                         ForEach(viewModel.pageViewModels.indices, id: \.self) { index in
                             if viewModel.pageViewModels[index].isCurrentWeather {
@@ -52,7 +52,8 @@ struct WeatherView: View {
                             }
                         }
                     }
-                    .frame(height: 15)
+                    .frame(width: proxy.size.width, height: 15)
+                    //.padding(.bottom, 10)
                     .animation(.default)
                 }
                 .frame(maxWidth: .infinity, alignment: .top)

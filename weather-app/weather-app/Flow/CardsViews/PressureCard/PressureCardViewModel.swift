@@ -9,7 +9,7 @@ import SwiftUI
 
 final class PressureCardViewModel: ObservableObject {
     private let spacing: CGFloat = 20
-    private let maxPressure = 1500
+    private let maxPressure: CGFloat = 1500
     let currentProgress: Float
 
     @Published var width: CGFloat
@@ -24,7 +24,7 @@ final class PressureCardViewModel: ObservableObject {
         self.description = "\(preassure) hPa"
         self.width = size.width/2 - spacing
         
-        let progressPercent = Float(preassure * 100) / Float(maxPressure)
-        self.currentProgress =  (progressPercent * Float(size.width/2 - spacing)) / 100
+        let progressPercent = preassure.convertToPercentage(maxValue: maxPressure)
+        currentProgress =  progressPercent.getValueFromPercentage(value: (size.width/2 - spacing))
     }
 }

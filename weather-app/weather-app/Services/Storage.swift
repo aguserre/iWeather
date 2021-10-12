@@ -42,7 +42,7 @@ extension Storage {
 }
 
 struct AppData {
-    @Storage(key: .lastLocation, defaultValue: WeatherModelFake.fakeWeather)
+    @Storage(key: .lastLocation, defaultValue: WeatherModelFake().fakeWeather)
     static var lastCurrentWeather: WeatherModel
     
     @Storage(key: .ids, defaultValue: ["2643743", "3441575", "3433955"])

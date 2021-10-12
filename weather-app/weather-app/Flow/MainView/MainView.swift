@@ -23,6 +23,7 @@ struct MainView: View {
             } else {
                 WeatherView(viewModel: WeatherModel.placeHolder)
             }
+            
             if viewModel.isLoading {
                 LoadingOverlaySUI()
                     .edgesIgnoringSafeArea(.all)

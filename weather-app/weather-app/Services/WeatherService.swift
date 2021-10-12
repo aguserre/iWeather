@@ -8,9 +8,10 @@
 import SwiftUI
 import Combine
 
-final class WeatherService {
-    
-    func getWeathersInfo(fetchType: FetchType) -> AnyPublisher<WeatherModel, Error> {
+struct ApiClient: Requestable {
+    func make(
+        _ fetchType: FetchType
+    ) -> AnyPublisher<WeatherModel, Error> {
         let baseUrl = ApiUrlBase.weatherById
         var isCurrentWeather = false
         guard let weatherUrl = URL(string: baseUrl.rawValue) else { fatalError("Invalid URL") }
@@ -32,12 +33,12 @@ final class WeatherService {
         components.queryItems = queryItems
         
         let request = URLRequest(url: components.url!)
-        debugPrint(request)
+            
         return URLSession.shared
             .dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: WeatherModel.self, decoder: JSONDecoder())
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .map {
                 var model = $0
                 model.isCurrent = isCurrentWeather
@@ -47,12 +48,7 @@ final class WeatherService {
     }
 }
 
-enum FetchType {
-    case byId(id: String)
-    case coordinates(lon: Double, lat: Double)
-}
-
-private extension WeatherService {
+private extension ApiClient {
     private enum ApiUrlBase: String {
         case weatherById = "http://api.openweathermap.org/data/2.5/weather"
     }
@@ -60,4 +56,9 @@ private extension WeatherService {
     private enum ApiKey: String {
         case weatherApiKey = "9f783be210d7bc60e414702cc8af8f5e"
     }
+}
+
+enum FetchType {
+    case byId(id: String)
+    case coordinates(lon: Double, lat: Double)
 }

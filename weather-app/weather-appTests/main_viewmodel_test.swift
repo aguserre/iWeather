@@ -10,7 +10,12 @@ import XCTest
 
 class main_viewmodel_test: XCTestCase {
     
-    var sut = MainViewModel()
+    var sut: MainViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        sut = MainViewModel()
+    }
     
     func test_buttonTitleWithNegativeServiceError() {
         sut.retrysCount = -5

@@ -17,16 +17,10 @@ final class WeatherViewModel: ObservableObject {
     
     func getIndex() -> Int {
         let progress = Int(round(offset / UIScreen.main.bounds.width))
+        guard progress >= 0, !pageViewModels.isEmpty else { return 0 }
         let index = min(Int(progress), pageViewModels.count - 1)
         
         return index
-    }
-    
-    func getIndicatorOffset() -> CGFloat {
-        let progress = offset / UIScreen.main.bounds.width
-        let maxWidth: CGFloat = 12 + 7
-        
-        return progress * maxWidth
     }
     
     func isSelected(index: Int) -> Bool {

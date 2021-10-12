@@ -10,23 +10,24 @@ import Combine
 
 final class WeatherPageViewModel: ObservableObject {
     let id = UUID()
-    private var mainTemp: String
-    private var cityName: String
-    private var weatherDescription: String
-    private var minTemp: String
-    private var maxTemp: String
-    private var intensity: CGFloat
-    private var visibility: String
-    private var windVelocity: String
-    private var dayState: CGFloat
-    private var isNight: Bool
-    private var sunsetTime: String
-    private var currentTime: String
-    private var sunriseTime: String
-    private var pressure: Int
-    private var humidity: String
-    private var latitude: Double
-    private var longitude: Double
+    private let mainTemp: String
+    private let cityName: String
+    private let weatherDescription: String
+    private let minTemp: String
+    private let maxTemp: String
+    private let intensity: CGFloat
+    private let visibility: String
+    private let windVelocity: String
+    private let dayState: CGFloat
+    private let isNight: Bool
+    private let sunsetTime: String
+    private let currentTime: String
+    private let sunriseTime: String
+    private let pressure: Int
+    private let humidity: String
+    private let latitude: Double
+    private let longitude: Double
+    private let spacing: CGFloat
     
     @Published var isCurrentWeather: Bool
     @Published var weatherMainStatus: MainValues
@@ -36,6 +37,7 @@ final class WeatherPageViewModel: ObservableObject {
 
     init(weather: WeatherModel) {
         let mainWeather = weather.weather.first?.main
+        spacing = 15
         intensity = mainWeather == .Rain ? 200 : (mainWeather == .Snow ? 20 : 0)
         isCurrentWeather = weather.isCurrent ?? false
         backgroundColor = weather.backGroundColor
@@ -65,7 +67,7 @@ final class WeatherPageViewModel: ObservableObject {
     
     
     func getSpaces() -> CGFloat {
-        (15 * CGFloat(String(mainTemp).count)) + 15
+        (15 * CGFloat(String(mainTemp).count)) + spacing
     }
     
     func getTempViewModel() -> TempCardViewModel {

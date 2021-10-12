@@ -10,7 +10,7 @@ import CoreLocation
 import Combine
 
 final class MainViewModel: NSObject, ObservableObject {
-    private let service: WeatherService
+    private let service: WeatherProvider
     private let savedIds: [String]
     private let maxIntents: Int
     private var locationManager: CLLocationManager?
@@ -28,7 +28,7 @@ final class MainViewModel: NSObject, ObservableObject {
     @Published var retrysCount: Int
     
     override init() {
-        service = WeatherService()
+        service = WeatherProvider(apiClient: ApiClient())
         savedIds = WeatherModel.citySavedIds
         retrysCount = 0
         maxIntents = 3
@@ -133,12 +133,11 @@ extension MainViewModel {
     
     private func fillPublishers(completion: @escaping ()->(Void)) {
         savedIds.forEach { id in
-            publishers.append(service.getWeathersInfo(fetchType: .byId(id: id)))
+            publishers.append(service.allWeathersById(id: id))
         }
         
         if let location = coordinates {
-            publishers.append(service.getWeathersInfo(fetchType: .coordinates(lon: location.longitude,
-                                                                              lat: location.latitude)))
+            publishers.append(service.allWeathersByCoords(lon: location.longitude, lat: location.latitude))
         }
         completion()
     }

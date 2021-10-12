@@ -4,9 +4,9 @@
 //
 //  Created by Agustin Errecalde on 06/10/2021.
 //
-import Foundation
+import SwiftUI
+
 extension Int {
-    
     func convertToHourDay(timeFromGMT: Int) -> Int {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         var calendar = Calendar.current
@@ -30,6 +30,11 @@ extension Int {
         let mins = calendar.component(.minute, from: date)
 
         return formateNumberTime(val: hour)+" : "+formateNumberTime(val: mins)
+    }
+    
+    func convertToPercentage(maxValue: CGFloat) -> Float {
+        guard maxValue != 0 else { return 0 }
+        return Float(abs(self) * 100) / Float(abs(maxValue))
     }
     
     private func formateNumberTime(val: Int) -> String {

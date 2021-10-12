@@ -235,3 +235,9 @@ extension Sys: Codable {
         self.sunset = try container.decode(Int.self, forKey: .sunset)
     }
 }
+
+enum Units: String, Codable {
+    case celcius = "metric"
+    case fahrenheit = "imperial"
+    case kelvin = ""
+}

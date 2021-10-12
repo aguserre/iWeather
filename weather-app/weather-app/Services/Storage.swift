@@ -37,6 +37,7 @@ extension Storage {
     enum KeyType: String {
         case lastLocation = "lastCurrentWeather"
         case ids = "ids"
+        case weatherUnit = "weatherUnit"
     }
 }
 
@@ -46,4 +47,7 @@ struct AppData {
     
     @Storage(key: .ids, defaultValue: ["2643743", "3441575", "3433955"])
     static var savedIds: [String]
+    
+    @Storage(key: .weatherUnit, defaultValue: .celcius)
+    static var weatherUnitDefault: Units
 }

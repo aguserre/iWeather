@@ -10,11 +10,7 @@ import Combine
 
 final class WeatherService {
     
-    enum Units: String {
-        case celcius = "metric"
-    }
-    
-    func getWeathersInfo(fetchType: FetchType, metrics: Units) -> AnyPublisher<WeatherModel, Error> {
+    func getWeathersInfo(fetchType: FetchType) -> AnyPublisher<WeatherModel, Error> {
         let baseUrl = ApiUrlBase.weatherById
         var isCurrentWeather = false
         guard let weatherUrl = URL(string: baseUrl.rawValue) else { fatalError("Invalid URL") }
@@ -30,7 +26,7 @@ final class WeatherService {
             queryItems.append(URLQueryItem(name: "lat", value: String(lat)))
             queryItems.append(URLQueryItem(name: "lon", value: String(lon)))
         }
-        queryItems.append(URLQueryItem(name: "units", value: metrics.rawValue))
+        queryItems.append(URLQueryItem(name: "units", value: AppData.weatherUnitDefault.rawValue))
         queryItems.append(URLQueryItem(name: "appid", value: ApiKey.weatherApiKey.rawValue))
         
         components.queryItems = queryItems

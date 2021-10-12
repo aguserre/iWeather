@@ -20,62 +20,76 @@ final class MainViewModel: NSObject, ObservableObject {
     @Published private var coordinates: CLLocationCoordinate2D?
     @Published private var cancellable = Set<AnyCancellable>()
     @Published var resultStatus: ResultStatus = .none
-    @Published var pageViewModels: [WeatherPageViewModel] = []
+    @Published var weatherViewModel: WeatherViewModel = WeatherModel.placeHolder
     @Published var errorMessage: String = ""
     @Published var showAlert: Bool = false
     @Published var isLoading: Bool = true
-    @Published var alertButtonTitle: String = "Retry"
+    @Published var errorType: ErrorTypes = .none
+    
+    enum ErrorTypes {
+        case location, service, other, none
+    }
+    
+    var alertButtonTitle: String {
+        errorType != .service ? "Ok" : ( maxIntents == retrysCount ? "Ok" : "Retry")
+    }
+    
+    enum ResultStatus {
+        case finished, none
+    }
 
     override init() {
         super.init()
         setupLocationManager()
     }
     
-    enum ResultStatus {
-        case finished, none
-    }
-    
-    func fetch() {
-        getWeathers()
-    }
-    
     func alertButtonTapped() {
-        isLoading = true
-        retryIfNeeded()
+        switch errorType {
+        case .location:
+            isLoading = true
+            getWeathers()
+        case .service:
+            isLoading = true
+            retryIfNeeded()
+        case .other, .none:
+            isLoading = false
+            resultStatus = .none
+        }
     }
     
     private func retryIfNeeded() {
         resultStatus = .none
         retrysCount += 1
-        setupButtonTitle()
-        if retrysCount <= maxIntents {
-            fetch()
-        } else {
-            setupErrorModelView()
-        }
+        retrysCount <= maxIntents ? getWeathers() : setupAfterNetworkingFailed()
     }
     
-    private func setupErrorModelView() {
-        showAlert = false
+    private func setupAfterNetworkingFailed() {
+        isLoading = false
+        resultStatus = .none
+    }
+    
+    private func setupWithErrorResponse(_ error: Error) {
+        errorType = (400...499).contains((error as NSError).code) ? .service : .other
+        errorMessage = errorType == .service ? error.localizedDescription : CustomError.unexpected.rawValue
         resultStatus = .none
         isLoading = false
+        
+        showAlert = true
     }
     
-    private func setupButtonTitle() {
-        alertButtonTitle = maxIntents == retrysCount ? "Ok" : "Retry"
-    }
-    
-    private func setupWithError(description: String) {
-        self.errorMessage = description
-        self.showAlert = true
-        self.resultStatus = .none
-        self.isLoading = false
+    private func setupWithErrorLocation() {
+        errorType = .location
+        coordinates = nil
+        
+        showAlert = true
     }
     
 }
 
 extension MainViewModel {
     private func getWeathers() {
+        if !publishers.isEmpty { publishers.removeAll() }
+
         fillPublishers {
             Publishers.Sequence(sequence: self.publishers)
                 .compactMap { $0 }
@@ -83,31 +97,37 @@ extension MainViewModel {
                 .map { WeatherPageViewModel(weather: $0) }
                 .collect()
                 .receive(on: RunLoop.main)
-                .sink(receiveCompletion: { completion in
+                .sink(receiveCompletion: { [weak self] completion in
+                    guard let self = self else { return }
                     switch completion {
                     case .failure(let error):
-                        self.setupWithError(description: error.localizedDescription)
+                        self.setupWithErrorResponse(error)
                     case .finished:
-                        self.resultStatus = .finished
                         self.isLoading = false
+                        self.resultStatus = .finished
+                        self.errorType = .none
                     }
-                }, receiveValue: { pageViewModels in
-                    self.pageViewModels = pageViewModels.sorted(by: { $0.isCurrentWeather && !$1.isCurrentWeather })
-                    debugPrint(pageViewModels)
+                }, receiveValue: { [weak self] pageViewModels in
+                    guard let self = self else { return }
+                    let sortedPages = pageViewModels.sorted(by: { $0.isCurrentWeather && !$1.isCurrentWeather })
+                    self.weatherViewModel = WeatherViewModel(pageViewModels: sortedPages)
                 })
                 .store(in: &self.cancellable)
         }
     }
     
+    func updateViewModel() {
+        
+    }
+    
     private func fillPublishers(completion: @escaping ()->(Void)) {
         savedIds.forEach { id in
-            publishers.append(service.getWeathersInfo(fetchType: .byId(id: id), metrics: .celcius))
+            publishers.append(service.getWeathersInfo(fetchType: .byId(id: id)))
         }
         
         if let location = coordinates {
             publishers.append(service.getWeathersInfo(fetchType: .coordinates(lon: location.longitude,
-                                                                              lat: location.latitude),
-                                                      metrics: .celcius))
+                                                                              lat: location.latitude)))
         }
         completion()
     }
@@ -115,6 +135,8 @@ extension MainViewModel {
 
 extension MainViewModel: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        isLoading = true
+        resultStatus = .none
         checkPermissions()
     }
     
@@ -122,27 +144,30 @@ extension MainViewModel: CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
-        } else {
-            errorMessage = "Permiss not granted"
         }
     }
     
-    private func checkPermissions() {
-        guard let locationManager = locationManager else { return }
+    func checkPermissions() {
+        guard let locationManager = locationManager else {
+            getWeathers()
+            return
+        }
+        
         switch locationManager.authorizationStatus {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            errorMessage = "Your locations is restricted"
-            showAlert = true
+            errorMessage = CustomError.restricted.rawValue
+            setupWithErrorLocation()
         case .denied:
-            errorMessage = "You have denied this app location permission. Go into settings to change it"
-            showAlert = true
+            errorMessage = CustomError.denied.rawValue
+            setupWithErrorLocation()
         case .authorizedAlways, .authorizedWhenInUse:
             guard let coordinates = locationManager.location?.coordinate else { return }
             self.coordinates = coordinates
+            getWeathers()
         @unknown default:
-            break
+            getWeathers()
         }
     }
 }

@@ -19,7 +19,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if viewModel.resultStatus == .finished {
-                WeatherView(viewModel: WeatherViewModel(pageViewModels: viewModel.pageViewModels))
+                WeatherView(viewModel: viewModel.weatherViewModel)
             } else {
                 WeatherView(viewModel: WeatherModel.placeHolder)
             }
@@ -27,8 +27,6 @@ struct MainView: View {
                 LoadingOverlaySUI()
                     .edgesIgnoringSafeArea(.all)
             }
-        }.onAppear {
-            viewModel.fetch()
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
@@ -42,3 +40,9 @@ struct MainView: View {
     }
 }
 
+enum CustomError: String {
+    case unexpected = "Unexpected Error"
+    case restricted = "Your locations is restricted"
+    case denied = "You have denied this app location permission. Go into settings to change it"
+    case serviceError = "Connection Error"
+}

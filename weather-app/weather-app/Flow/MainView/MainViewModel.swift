@@ -12,7 +12,6 @@ import Combine
 final class MainViewModel: NSObject, ObservableObject {
     private let service: WeatherService
     private let savedIds: [String]
-    private var retrysCount: Int
     private let maxIntents: Int
     private var locationManager: CLLocationManager?
     private var publishers: [AnyPublisher<WeatherModel, Error>]
@@ -26,6 +25,7 @@ final class MainViewModel: NSObject, ObservableObject {
     @Published var showAlert: Bool
     @Published var isLoading: Bool
     @Published var errorType: ErrorTypes
+    @Published var retrysCount: Int
     
     override init() {
         service = WeatherService()
@@ -50,7 +50,7 @@ final class MainViewModel: NSObject, ObservableObject {
     }
     
     var alertButtonTitle: String {
-        errorType != .service ? "Ok" : ( maxIntents == retrysCount ? "Ok" : "Retry")
+        errorType != .service ? "Ok" : ( maxIntents <= retrysCount ? "Ok" : "Retry")
     }
     
     enum ResultStatus {

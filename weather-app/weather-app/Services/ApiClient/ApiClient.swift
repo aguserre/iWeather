@@ -27,6 +27,7 @@ struct ApiClient: Requestable {
             queryItems.append(URLQueryItem(name: "lat", value: String(lat)))
             queryItems.append(URLQueryItem(name: "lon", value: String(lon)))
         }
+        queryItems.append(URLQueryItem(name: "lang", value: "es"/*Locale.current.languageCode*/))
         queryItems.append(URLQueryItem(name: "units", value: AppData.weatherUnitDefault.rawValue))
         queryItems.append(URLQueryItem(name: "appid", value: ApiKey.weatherApiKey.rawValue))
         

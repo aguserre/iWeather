@@ -55,6 +55,7 @@ struct PressureCardView: View {
                     
                     Text(viewModel.description)
                         .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(.white)
                 }
                 Spacer()
             }

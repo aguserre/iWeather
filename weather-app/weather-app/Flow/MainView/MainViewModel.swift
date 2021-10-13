@@ -94,7 +94,8 @@ final class MainViewModel: NSObject, ObservableObject {
     private func setupWithErrorLocation() {
         errorType = .location
         coordinates = nil
-        
+        isLoading = false
+
         showAlert = true
     }
     

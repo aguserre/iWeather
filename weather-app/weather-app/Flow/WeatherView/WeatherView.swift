@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SpriteKit
 
 struct WeatherView: View {
     

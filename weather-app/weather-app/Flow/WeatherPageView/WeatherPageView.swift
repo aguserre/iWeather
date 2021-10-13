@@ -42,12 +42,6 @@ struct WeatherPageView: View {
                     SunCardView(viewModel: viewModel.getSunCardViewModel())
                     
                     HStack(spacing: 10) {
-                        GenericCard(viewModel: viewModel.getVisibilityCardViewModel())
-                        
-                        GenericCard(viewModel: viewModel.getWindCardViewModel())
-                    }
-                    
-                    HStack(spacing: 10) {
                         PressureCardView(viewModel: viewModel.getPressureCardViewModel())
                         
                         GenericCard(viewModel: viewModel.getHumidityCardViewModel())

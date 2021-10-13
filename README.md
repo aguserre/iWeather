@@ -34,3 +34,11 @@ __Connection to API which shows your location weather (If you accept the permiss
 - MapKit
 - CoreLocation
 - SpriteKit
+
+<h3 align="center">Some captures from ipahone 12 pro</h3>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/50756810/137085691-f585f40e-21c6-4686-99d7-c65e022259e5.PNG" alt="animated" width="200" height="400"/>
+    <img src="https://user-images.githubusercontent.com/50756810/137085825-a045cfd7-7a69-4e65-8fae-251442a53fba.PNG" alt="animated" width="200" height="400"/>
+    <img src="https://user-images.githubusercontent.com/50756810/137085845-2b1e3707-8ab7-47c7-85ac-8756a11c48a3.PNG" alt="animated" width="200" height="400"/>
+    <img src="https://user-images.githubusercontent.com/50756810/137085849-5bc8464a-2cd6-4715-a6d8-62dc66f28252.PNG" alt="animated" width="200" height="400"/>
+</p>
